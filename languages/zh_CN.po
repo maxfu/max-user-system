@@ -1,0 +1,157 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: MaxFu User System\n"
+"Language: zh-CN\n"
+
+#: 
+msgid "You are already signed in."
+msgstr "您已登录。"
+
+#: 
+msgid "Registering new users is currently not allowed."
+msgstr "目前不允许注册新用户。"
+
+#: 
+msgid "You are not signed in yet."
+msgstr "您尚未登录。"
+
+#: 
+msgid "Hello!"
+msgstr "你好！"
+
+#: 
+msgid "You asked us to reset your password for your account using the email address %s."
+msgstr "您要求我们使用电子邮件地址％s重置您帐户的密码。"
+
+#: 
+msgid "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen."
+msgstr "如果这是一个错误，或者您没有要求重置密码，请忽略此电子邮件，不会发生任何事情。"
+
+#: 
+msgid "To reset your password, visit the following address:"
+msgstr "要重置密码，请访问以下地址："
+
+#: 
+msgid "Thanks!"
+msgstr "谢谢！"
+
+#: 
+msgid "You do have an email address, right?"
+msgstr "你有一个电子邮件地址，对吧？"
+
+#: 
+msgid "You need to enter a password to login."
+msgstr "您需要输入密码才能登录。"
+
+#: 
+msgid "We don't have any users with that email address. Maybe you used a different one when signing up?"
+msgstr "我们没有任何用户使用该电子邮件地址。还可以在注册时使用不同的服务吗？"
+
+#: 
+msgid "The password you entered wasn't quite right. <a href='%s'>Did you forget your password</a>?"
+msgstr "您输入的密码不太正确。 <a href='%s'>您忘了密码</a>了吗？"
+
+#: 
+msgid "The email address you entered is not valid."
+msgstr "您输入的电子邮件地址无效。"
+
+#: 
+msgid "An account exists with this email address."
+msgstr "此电子邮件地址存在一个帐户。"
+
+#: 
+msgid "You need to enter your email address to continue."
+msgstr "您需要输入您的电子邮件地址才能继续。"
+
+#: 
+msgid "There are no users registered with this email address."
+msgstr "没有用户使用此电子邮件地址注册。"
+
+#: 
+msgid "The password reset link you used is not valid anymore."
+msgstr "您使用的密码重置链接不再有效。"
+
+#: 
+msgid "The two passwords you entered don't match."
+msgstr "您输入的两个密码不匹配。"
+
+#: 
+msgid "Sorry, we don't accept empty passwords."
+msgstr "对不起，我们不接受空密码。"
+
+#: 
+msgid "An unknown error occurred. Please try again later."
+msgstr "出现未知错误。请稍后再试。"
+
+#: 
+msgid "CCCA Member Profile"
+msgstr "商会会员资料"
+
+#: 
+msgid "Sign In"
+msgstr "登入"
+
+#: 
+msgid "Your Account"
+msgstr "你的帐户"
+
+#: 
+msgid "Register"
+msgstr "注册"
+
+#: 
+msgid "Forgot Your Password?"
+msgstr "忘记密码了吗？"
+
+#: 
+msgid "Pick a New Password"
+msgstr "选择一个新密码"
+
+#: 
+msgid "Invalid password reset link."
+msgstr "密码重置链接无效。"
+
+#: 
+msgid "Author Archives for "
+msgstr "作者档案"
+
+#: 
+msgid "Note: Your password will be generated automatically and sent to your email address."
+msgstr "注意：您的密码将自动生成并发送到您的电子邮件地址。"
+
+#: 
+msgid "New password"
+msgstr "新密码"
+
+#: 
+msgid "Repeat new password"
+msgstr "重复新密码"
+
+#: 
+msgid "Reset Password"
+msgstr "重设密码"
+
+#: 
+msgid "Email"
+msgstr "电子邮件"
+
+#: 
+msgid "You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered."
+msgstr "您已成功注册<strong>％s </ strong>。我们已将您的密码通过电子邮件发送到您输入的电子邮件地"
+
+#: 
+msgid "Check your email for a link to reset your password."
+msgstr "查看您的电子邮件，找到重置密码的链接。"
+
+#: 
+msgid "Your password has been changed. You can sign in now."
+msgstr "您的密码已被更改。您现在可以登录。"
+
+#: 
+msgid "You have signed out. Would you like to sign in again?"
+msgstr "你已经退出了。你想再次登录吗？"
+
