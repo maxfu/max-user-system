@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       Max Fu's User System
+ * Plugin Name:       Max's User System
  * Description:       A plugin that replaces the WordPress login flow with a custom page. Built according to article 'Build a Custom WordPress User Flow' by Jarkko Laine. Re-developed by Max Fu.
  * Version:           0.0.2
  * Author:            Max Fu
  * License:           GPL-2.0+
- * Text Domain:       maxfu-user-system
+ * Text Domain:       max-user-sys
  * Domain Path:       /languages
  */
 
@@ -19,7 +19,7 @@ class Personalize_Login_Plugin {
      */
     public function __construct() {
         // Localisation Support
-        load_plugin_textdomain('maxfu-user-system', false, 'maxfu-user-system/languages');
+        load_plugin_textdomain('max-user-sys', false, 'max-user-sys/languages');
         add_shortcode( 'custom-login-form', array( $this, 'render_login_form' ) );
         add_shortcode( 'custom-register-form', array( $this, 'render_register_form' ) );
         add_shortcode( 'custom-password-lost-form', array( $this, 'render_password_lost_form' ) );
@@ -60,23 +60,23 @@ class Personalize_Login_Plugin {
         // Information needed for creating the plugin's pages
         $page_definitions = array(
             'member-login' => array(
-                'title' => __( 'Sign In', 'maxfu-user-system' ),
+                'title' => __( 'Sign In', 'max-user-sys' ),
                 'content' => '[custom-login-form]'
             ),
             'member-account' => array(
-                'title' => __( 'Your Account', 'maxfu-user-system' ),
+                'title' => __( 'Your Account', 'max-user-sys' ),
                 'content' => '[account-info]'
             ),
             'member-register' => array(
-                'title' => __( 'Register', 'maxfu-user-system' ),
+                'title' => __( 'Register', 'max-user-sys' ),
                 'content' => '[custom-register-form]'
             ),
             'member-password-lost' => array(
-                'title' => __( 'Forgot Your Password?', 'maxfu-user-system' ),
+                'title' => __( 'Forgot Your Password?', 'max-user-sys' ),
                 'content' => '[custom-password-lost-form]'
             ),
             'member-password-reset' => array(
-                'title' => __( 'Pick a New Password', 'maxfu-user-system' ),
+                'title' => __( 'Pick a New Password', 'max-user-sys' ),
                 'content' => '[custom-password-reset-form]'
             ),
         );
@@ -116,7 +116,7 @@ class Personalize_Login_Plugin {
         $show_title = $attributes['show_title'];
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'maxfu-user-system' );
+            return __( 'You are already signed in.', 'max-user-sys' );
         }
 
         // Pass the redirect parameter to the WordPress login functionality: by default,
@@ -168,11 +168,11 @@ class Personalize_Login_Plugin {
         $attributes = shortcode_atts( $default_attributes, $attributes );
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'maxfu-user-system' );
+            return __( 'You are already signed in.', 'max-user-sys' );
         }
 
         if ( ! get_option( 'users_can_register' ) ) {
-            return __( 'Registering new users is currently not allowed.', 'maxfu-user-system' );
+            return __( 'Registering new users is currently not allowed.', 'max-user-sys' );
         }
 
         // Retrieve possible errors from request parameters
@@ -202,7 +202,7 @@ class Personalize_Login_Plugin {
         $attributes = shortcode_atts( $default_attributes, $attributes );
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'maxfu-user-system' );
+            return __( 'You are already signed in.', 'max-user-sys' );
         }
 
         // Retrieve possible errors from request parameters
@@ -233,7 +233,7 @@ class Personalize_Login_Plugin {
         $attributes = shortcode_atts( $default_attributes, $attributes );
 
         if ( is_user_logged_in() ) {
-            return __( 'You are already signed in.', 'maxfu-user-system' );
+            return __( 'You are already signed in.', 'max-user-sys' );
         } else {
             if ( isset( $_REQUEST['login'] ) && isset( $_REQUEST['key'] ) ) {
                 $attributes['login'] = $_REQUEST['login'];
@@ -252,7 +252,7 @@ class Personalize_Login_Plugin {
 
                 return $this->get_template_html( 'password_reset_form', $attributes );
             } else {
-                return __( 'Invalid password reset link.', 'maxfu-user-system' );
+                return __( 'Invalid password reset link.', 'max-user-sys' );
             }
         }
     }
@@ -284,7 +284,7 @@ class Personalize_Login_Plugin {
 
             return $this->get_template_html( 'account_info', $attributes );
         } else {
-            return __( 'You are not signed in yet.', 'maxfu-user-system' );
+            return __( 'You are not signed in yet.', 'max-user-sys' );
         }
     }
 
@@ -527,12 +527,12 @@ class Personalize_Login_Plugin {
      */
     public function replace_retrieve_password_message( $message, $key, $user_login, $user_data ) {
         // Create new message
-        $msg  = __( 'Hello!', 'maxfu-user-system' ) . "\r\n\r\n";
-        $msg .= sprintf( __( 'You asked us to reset your password for your account using the email address %s.', 'maxfu-user-system' ), $user_login ) . "\r\n\r\n";
-        $msg .= __( "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen.", 'maxfu-user-system' ) . "\r\n\r\n";
-        $msg .= __( 'To reset your password, visit the following address:', 'maxfu-user-system' ) . "\r\n\r\n";
+        $msg  = __( 'Hello!', 'max-user-sys' ) . "\r\n\r\n";
+        $msg .= sprintf( __( 'You asked us to reset your password for your account using the email address %s.', 'max-user-sys' ), $user_login ) . "\r\n\r\n";
+        $msg .= __( "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen.", 'max-user-sys' ) . "\r\n\r\n";
+        $msg .= __( 'To reset your password, visit the following address:', 'max-user-sys' ) . "\r\n\r\n";
         $msg .= site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . "\r\n\r\n";
-        $msg .= __( 'Thanks!', 'maxfu-user-system' ) . "\r\n";
+        $msg .= __( 'Thanks!', 'max-user-sys' ) . "\r\n";
 
         return $msg;
     }
@@ -653,58 +653,58 @@ class Personalize_Login_Plugin {
     private function get_error_message( $error_code ) {
         switch ( $error_code ) {
             case 'empty_username':
-                return __( 'You do have an email address, right?', 'maxfu-user-system' );
+                return __( 'You do have an email address, right?', 'max-user-sys' );
 
             case 'empty_password':
-                return __( 'You need to enter a password to login.', 'maxfu-user-system' );
+                return __( 'You need to enter a password to login.', 'max-user-sys' );
 
             case 'invalid_username':
                 return __(
                     "We don't have any users with that email address. Maybe you used a different one when signing up?",
-                    'maxfu-user-system'
+                    'max-user-sys'
                 );
 
             case 'incorrect_password':
                 $err = __(
                     "The password you entered wasn't quite right. <a href='%s'>Did you forget your password</a>?",
-                    'maxfu-user-system'
+                    'max-user-sys'
                 );
                 return sprintf( $err, wp_lostpassword_url() );
 
             // Registration errors
             case 'email':
-                return __( 'The email address you entered is not valid.', 'maxfu-user-system' );
+                return __( 'The email address you entered is not valid.', 'max-user-sys' );
 
             case 'email_exists':
-                return __( 'An account exists with this email address.', 'maxfu-user-system' );
+                return __( 'An account exists with this email address.', 'max-user-sys' );
 
             case 'closed':
-                return __( 'Registering new users is currently not allowed.', 'maxfu-user-system' );
+                return __( 'Registering new users is currently not allowed.', 'max-user-sys' );
 
             // Lost password
             case 'empty_username':
-                return __( 'You need to enter your email address to continue.', 'maxfu-user-system' );
+                return __( 'You need to enter your email address to continue.', 'max-user-sys' );
 
             case 'invalid_email':
             case 'invalidcombo':
-                return __( 'There are no users registered with this email address.', 'maxfu-user-system' );
+                return __( 'There are no users registered with this email address.', 'max-user-sys' );
 
             // Reset password
             case 'expiredkey':
             case 'invalidkey':
-                return __( 'The password reset link you used is not valid anymore.', 'maxfu-user-system' );
+                return __( 'The password reset link you used is not valid anymore.', 'max-user-sys' );
 
             case 'password_reset_mismatch':
-                return __( "The two passwords you entered don't match.", 'maxfu-user-system' );
+                return __( "The two passwords you entered don't match.", 'max-user-sys' );
 
             case 'password_reset_empty':
-                return __( "Sorry, we don't accept empty passwords.", 'maxfu-user-system' );
+                return __( "Sorry, we don't accept empty passwords.", 'max-user-sys' );
 
             default:
                 break;
         }
 
-        return __( 'An unknown error occurred. Please try again later.', 'maxfu-user-system' );
+        return __( 'An unknown error occurred. Please try again later.', 'max-user-sys' );
     }
 
     /**
@@ -885,7 +885,7 @@ class Personalize_Login_Plugin {
         }
       </style>
 
-    	<h2><?php _e('CCCA Member Profile', 'maxfu-user-system'); ?></h2>
+    	<h2><?php _e('CCCA Member Profile', 'max-user-sys'); ?></h2>
 
     	<table class="form-table" id="ccca-member-profile">
 

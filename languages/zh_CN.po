@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: MaxFu User System\n"
+"Project-Id-Version: Max User System\n"
 "Language: zh-CN\n"
 
 #: 

@@ -132,7 +132,7 @@
     }
   </style>
 
-  <h2><?php _e('Edit Member Profile', 'maxfu-user-system'); ?></h2>
+  <h2><?php _e('Edit Member Profile', 'max-user-sys'); ?></h2>
 
   <form id="signupform" action="<?php echo esc_url( add_query_arg( 'para', 'save', esc_url(get_permalink()) ) )?>" method="post" class="mbr-form">
     <style type="text/css">
@@ -217,11 +217,11 @@
     </div>
 
       <p class="form-row">
-          <?php _e( 'Note: Your password will be generated automatically and sent to your email address.', 'maxfu-user-system' ); ?>
+          <?php _e( 'Note: Your password will be generated automatically and sent to your email address.', 'max-user-sys' ); ?>
       </p>
 
       <p class="signup-submit input-group-btn">
-          <input type="submit" name="submit" class="register-button btn btn-primary btn-form display-4" value="<?php _e( 'Submit', 'maxfu-user-system' ); ?>"/>
+          <input type="submit" name="submit" class="register-button btn btn-primary btn-form display-4" value="<?php _e( 'Submit', 'max-user-sys' ); ?>"/>
       </p>
   </form>
 
@@ -312,7 +312,7 @@
 
 <p><a class="register-button btn btn-primary btn-form display-4" href="<?php echo esc_url( add_query_arg( 'para', 'edit', esc_url(get_permalink()) ) )?>">Edit Profile</a></p>
 
-<h3 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><?php _e( 'Author Archives for ', 'maxfu-user-system' ); echo $current_user->user_login; ?></h3>
+<h3 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><?php _e( 'Author Archives for ', 'max-user-sys' ); echo $current_user->user_login; ?></h3>
 
 <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 <?php $custom_loop = new WP_Query(array( 'post_type' => 'post', 'author' => $current_user->ID, 'posts_per_page' => $posts_per_page, 'paged' => $paged )); ?>
