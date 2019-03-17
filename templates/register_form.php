@@ -86,7 +86,7 @@
           $strings = $dict[$lang]; ?>
 
     <?php if ( $attributes['show_title'] ) : ?>
-        <h3><?php _e( 'Register', 'personalize-login' ); ?></h3>
+        <h3><?php _e( 'Register', 'maxfu-user-system' ); ?></h3>
     <?php endif; ?>
 
     <?php if ( count( $attributes['errors'] ) > 0 ) : ?>
@@ -180,7 +180,7 @@
       </div>
 
         <p class="form-row">
-            <?php _e( 'Note: Your password will be generated automatically and sent to your email address.', 'personalize-login' ); ?>
+            <?php _e( 'Note: Your password will be generated automatically and sent to your email address.', 'maxfu-user-system' ); ?>
         </p>
 
         <p class="signup-submit input-group-btn">

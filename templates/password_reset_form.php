@@ -1,6 +1,6 @@
 <div id="password-reset-form" class="widecolumn">
     <?php if ( $attributes['show_title'] ) : ?>
-        <h3><?php _e( 'Pick a New Password', 'personalize-login' ); ?></h3>
+        <h3><?php _e( 'Pick a New Password', 'maxfu-user-system' ); ?></h3>
     <?php endif; ?>
 
     <form name="resetpassform" id="resetpassform" action="<?php echo site_url( 'wp-login.php?action=resetpass' ); ?>" method="post" autocomplete="off">
@@ -16,11 +16,11 @@
         <?php endif; ?>
 
         <p>
-            <label for="pass1"><?php _e( 'New password', 'personalize-login' ) ?></label>
+            <label for="pass1"><?php _e( 'New password', 'maxfu-user-system' ) ?></label>
             <input type="password" name="pass1" id="pass1" class="input" size="20" value="" autocomplete="off" />
         </p>
         <p>
-            <label for="pass2"><?php _e( 'Repeat new password', 'personalize-login' ) ?></label>
+            <label for="pass2"><?php _e( 'Repeat new password', 'maxfu-user-system' ) ?></label>
             <input type="password" name="pass2" id="pass2" class="input" size="20" value="" autocomplete="off" />
         </p>
 
@@ -28,7 +28,7 @@
 
         <p class="resetpass-submit">
             <input type="submit" name="submit" id="resetpass-button"
-                   class="button" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
+                   class="button" value="<?php _e( 'Reset Password', 'maxfu-user-system' ); ?>" />
         </p>
     </form>
 </div>

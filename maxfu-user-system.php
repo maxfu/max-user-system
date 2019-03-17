@@ -28,6 +28,7 @@ class Personalize_Login_Plugin {
 //        add_action( 'login_form_login', array( $this, 'redirect_to_custom_login' ) );
         add_filter( 'authenticate', array( $this, 'maybe_redirect_at_authenticate' ), 101, 3 );
 //        add_action( 'wp_logout', array( $this, 'redirect_after_logout' ) );
+        add_filter( 'query_vars', array( $this, 'mus_add_custom_query_var' ) );
         add_filter( 'login_redirect', array( $this, 'redirect_after_login' ), 10, 3 );
         add_action( 'login_form_register', array( $this, 'redirect_to_custom_register' ) );
         add_action( 'login_form_register', array( $this, 'do_register_user' ) );
@@ -43,6 +44,11 @@ class Personalize_Login_Plugin {
         add_action( 'edit_user_profile', array( $this, 'my_show_extra_profile_fields' ) );
         add_action( 'personal_options_update', array( $this, 'my_save_extra_profile_fields' ) );
         add_action( 'edit_user_profile_update', array( $this, 'my_save_extra_profile_fields' ) );
+    }
+
+    public function mus_add_custom_query_var( $vars ){
+      $vars[] = "para";
+      return $vars;
     }
 
     /**
