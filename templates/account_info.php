@@ -104,7 +104,7 @@
 
   <h2><?php _e('Edit Member Profile', 'max-user-sys'); ?></h2>
 
-  <form id="signupform" action="<?php echo esc_url( add_query_arg( 'para', 'save', esc_url(get_permalink()) ) )?>" method="post" class="mbr-form">
+  <form id="editform" action="<?php echo esc_url( add_query_arg( 'para', 'save', esc_url(get_permalink()) ) )?>" method="post" class="mbr-form">
     <style type="text/css">
       .form-control {
         background-color: #ffffff;
@@ -114,7 +114,7 @@
       <div class="col-md-4 multi-horizontal">
         <div class="form-group">
           <label class="form-control-label mbr-fonts-style display-3"><?php _e( 'Company Information', 'max-user-sys' ); ?></label><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="email">Company Email(Will be used as Username)</label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="email"><?php _e( 'Company Email(Will be used as Username)', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="email" id="email" class="form-control"></span><br>
           <label class="form-control-label mbr-fonts-style display-7" for="company_name"><?php _e( 'Company Name', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="company_name" id="company_name" class="form-control"></span><br>
