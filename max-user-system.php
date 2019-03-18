@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Max's User System
- * Description:       A plugin that replaces the WordPress login flow with a custom page. Built according to article 'Build a Custom WordPress User Flow' by Jarkko Laine. Re-developed by Max Fu.
+ * Plugin Name:       Max User System
+ * Description:       A plugin that replaces the WordPress login flow with a custom page. Built according to article 'Build a Custom WordPress User Flow' by Jarkko Laine.
  * Version:           0.0.2
- * Author:            Max Fu
+ * Author:            Max
  * License:           GPL-2.0+
  * Text Domain:       max-user-sys
  * Domain Path:       /languages
