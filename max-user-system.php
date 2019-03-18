@@ -753,92 +753,6 @@ class Personalize_Login_Plugin {
      * Extra User Fields
      */
     public function my_show_extra_profile_fields( $user ) {
-      $dict = array(
-          'en-US' => array(
-              'ccca_member_profile' => 'CCCA Member Profile',
-              'company_information' => 'Company Information',
-              'company_name' => 'Company Name',
-              'company_address' => 'Company Address',
-              'company_telephone' => 'Company Telephone',
-              'company_website' => 'Company Website',
-              'company_type' => 'Company Type',
-              'company_industry' => 'Company Industry',
-              'company_branch' => 'Company Branch',
-              'person_in_charge' => 'Person in Charge',
-              'first_name' => 'Person in Charge First Name',
-              'last_name' => 'Person in Charge Last Name',
-              'title' => 'Person in Charge Title',
-              'mobile' => 'Person in Charge Mobile',
-              'telephone' => 'Person in Charge Telephone',
-              'email' => 'Person in Charge Email',
-              'other_contacts' => 'Other Contacts',
-              'first_contact_name' => 'First Contact Name',
-              'first_contact_mobile' => 'First Contact Mobile',
-              'first_contact_email' => 'First Contact Email',
-              'second_contact_name' => 'Second Contact Name',
-              'second_contact_mobile' => 'Second Contact Mobile',
-              'second_contact_email' => 'Second Contact Email',
-              'sel' => 'Please Select',
-              'cce' => 'Chinese Central Enterprise',
-              'csoe' => 'Chinese State-Owned Enterprise',
-              'cpe' => 'Chinese Private Enterprise',
-              'pts' => 'Partnership',
-              'alcc' => 'Australian Local Chinese Company',
-              'alc' => 'Australian Local Company',
-              'oth' => 'Other(Fill Details in Comment)',
-              'sydney' => 'Sydney Branch',
-              'melbourne' => 'Melbourne Branch',
-              'perth' => 'Perth Branch',
-              'brisbane' => 'Brisbane Branch',
-              'adelaide' => 'Adelaide Branch',
-              'comment' => 'Comment'
-          ),
-
-          'zh-CN' => array(
-            'ccca_member_profile' => '商会会员资料',
-            'company_information' => '公司信息',
-            'company_name' => '公司名称',
-            'company_address' => '公司地址',
-            'company_telephone' => '公司电话',
-            'company_website' => '公司网站',
-            'company_type' => '公司属性',
-            'company_industry' => '公司行业',
-            'company_branch' => '所属分会',
-            'person_in_charge' => '负责人信息',
-            'first_name' => '负责人姓氏',
-            'last_name' => '负责人名字',
-            'title' => '负责人职位',
-            'mobile' => '负责人手机',
-            'telephone' => '负责人电话',
-            'email' => '负责人邮件',
-            'other_contacts' => '其他联系人',
-            'first_contact_name' => '第一联系人姓名',
-            'first_contact_mobile' => '第一联系人手机',
-            'first_contact_email' => '第一联系人邮箱',
-            'second_contact_name' => '第二联系人姓名',
-            'second_contact_mobile' => '第二联系人手机',
-            'second_contact_email' => '第二联系人邮箱',
-            'sel' => '请选择',
-            'cce' => '中资央企',
-            'csoe' => '中资国企',
-            'cpe' => '中资民营',
-            'pts' => '合伙制',
-            'alcc' => '澳州当地华人企业',
-            'alc' => '澳洲当地的外资企业',
-            'oth' => '其他(请在备注中填写)',
-            'sydney' => '悉尼分会',
-            'melbourne' => '墨尔本分会',
-            'perth' => '珀斯分会',
-            'brisbane' => '布里斯班分会',
-            'adelaide' => '阿德莱德分会',
-            'comment' => '备注'
-          )
-      );
-
-      $lang = get_bloginfo("language");
-
-      $strings = $dict[$lang];
-
       $ccca_profile = get_the_author_meta( 'ccca_profile', $user->ID );
 
     	if ( ! is_array( $ccca_profile ) ) {
@@ -890,15 +804,15 @@ class Personalize_Login_Plugin {
     	<table class="form-table" id="ccca-member-profile">
 
         <tr>
-    			<th><h3><?php echo $strings['company_information']; ?></h3></th>
-          <th><h3><?php echo $strings['person_in_charge']; ?></h3></th>
-          <th><h3><?php echo $strings['other_contacts']; ?></h3></th>
+    			<th><h3><?php _e( 'Company Information', 'max-user-sys' ); ?></h3></th>
+          <th><h3><?php _e( 'Person in Charge', 'max-user-sys' ); ?></h3></th>
+          <th><h3><?php _e( 'Other Contacts', 'max-user-sys' ); ?></h3></th>
     		</tr>
 
         <tr>
-          <th><label for="company_name"><?php echo $strings['company_name']; ?></label></th>
-          <th><label for="pic_fname"><?php echo $strings['first_name']; ?></label></th>
-          <th><label for="contact_1_name"><?php echo $strings['first_contact_name']; ?></label></th>
+          <th><label for="company_name"><?php _e( 'Company Name', 'max-user-sys' ); ?></label></th>
+          <th><label for="pic_fname"><?php _e( 'Person in Charge First Name', 'max-user-sys' ); ?></label></th>
+          <th><label for="contact_1_name"><?php _e( 'First Contact Name', 'max-user-sys' ); ?></label></th>
         </tr>
         <tr>
           <td>
@@ -913,9 +827,9 @@ class Personalize_Login_Plugin {
         </tr>
 
         <tr>
-          <th><label for="company_address"><?php echo $strings['company_address']; ?></label></th>
-          <th><label for="pic_lname"><?php echo $strings['last_name']; ?></label></th>
-          <th><label for="contact_1_mobile"><?php echo $strings['first_contact_mobile']; ?></label></th>
+          <th><label for="company_address"><?php _e( 'Company Address', 'max-user-sys' ); ?></label></th>
+          <th><label for="pic_lname"><?php _e( 'Person in Charge Last Name', 'max-user-sys' ); ?></label></th>
+          <th><label for="contact_1_mobile"><?php _e( 'First Contact Mobile', 'max-user-sys' ); ?></label></th>
         </tr>
         <tr>
           <td>
@@ -930,9 +844,9 @@ class Personalize_Login_Plugin {
         </tr>
 
         <tr>
-          <th><label for="company_phone"><?php echo $strings['company_telephone']; ?></label></th>
-          <th><label for="pic_title"><?php echo $strings['title']; ?></label></th>
-          <th><label for="contact_1_email"><?php echo $strings['first_contact_email']; ?></label></th>
+          <th><label for="company_phone"><?php _e( 'Company Telephone', 'max-user-sys' ); ?></label></th>
+          <th><label for="pic_title"><?php _e( 'Person in Charge Title', 'max-user-sys' ); ?></label></th>
+          <th><label for="contact_1_email"><?php _e( 'First Contact Email', 'max-user-sys' ); ?></label></th>
         </tr>
         <tr>
           <td>
@@ -947,9 +861,9 @@ class Personalize_Login_Plugin {
         </tr>
 
     		<tr>
-          <th><label for="company_website"><?php echo $strings['company_website']; ?></label></th>
-          <th><label for="pic_mobile"><?php echo $strings['mobile']; ?></label></th>
-          <th><label for="contact_2_name"><?php echo $strings['second_contact_name']; ?></label></th>
+          <th><label for="company_website"><?php _e( 'Company Website', 'max-user-sys' ); ?></label></th>
+          <th><label for="pic_mobile"><?php _e( 'Person in Charge Mobile', 'max-user-sys' ); ?></label></th>
+          <th><label for="contact_2_name"><?php _e( 'Second Contact Name', 'max-user-sys' ); ?></label></th>
     		</tr>
         <tr>
           <td>
@@ -964,9 +878,9 @@ class Personalize_Login_Plugin {
     		</tr>
 
         <tr>
-          <th><label for="company_industry"><?php echo $strings['company_industry']; ?></label></th>
-          <th><label for="pic_phone"><?php echo $strings['telephone']; ?></label></th>
-          <th><label for="contact_2_mobile"><?php echo $strings['second_contact_mobile']; ?></label></th>
+          <th><label for="company_industry"><?php _e( 'Company Industry', 'max-user-sys' ); ?></label></th>
+          <th><label for="pic_phone"><?php _e( 'Person in Charge Telephone', 'max-user-sys' ); ?></label></th>
+          <th><label for="contact_2_mobile"><?php _e( 'Second Contact Mobile', 'max-user-sys' ); ?></label></th>
     		</tr>
         <tr>
           <td>
@@ -981,21 +895,21 @@ class Personalize_Login_Plugin {
         </tr>
 
         <tr>
-          <th><label for="company_type"><?php echo $strings['company_type']; ?></label></th>
-          <th><label for="pic_email"><?php echo $strings['email']; ?></label></th>
-          <th><label for="contact_2_email"><?php echo $strings['second_contact_email']; ?></label></th>
+          <th><label for="company_type"><?php _e( 'Company Type', 'max-user-sys' ); ?></label></th>
+          <th><label for="pic_email"><?php _e( 'Person in Charge Email', 'max-user-sys' ); ?></label></th>
+          <th><label for="contact_2_email"><?php _e( 'Second Contact Email', 'max-user-sys' ); ?></label></th>
         </tr>
         <tr>
           <td>
         		<select name="company_type" id="company_type">
-              <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'sel' ) {echo 'selected="selected"';} ?>><?php echo $strings['sel']; ?></option>
-              <option value="cce" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'cce' ) {echo 'selected="selected"';} ?>><?php echo $strings['cce']; ?></option>
-              <option value="csoe" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'csoe' ) {echo 'selected="selected"';} ?>><?php echo $strings['csoe']; ?></option>
-              <option value="cpe" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'cpe' ) {echo 'selected="selected"';} ?>><?php echo $strings['cpe']; ?></option>
-              <option value="pts" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'pts' ) {echo 'selected="selected"';} ?>><?php echo $strings['pts']; ?></option>
-              <option value="alcc" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'alcc' ) {echo 'selected="selected"';} ?>><?php echo $strings['alcc']; ?></option>
-              <option value="alc" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'alc' ) {echo 'selected="selected"';} ?>><?php echo $strings['alc']; ?></option>
-              <option value="oth" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'oth' ) {echo 'selected="selected"';} ?>><?php echo $strings['oth']; ?></option>
+              <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'sel' ) {echo 'selected="selected"';} ?>><?php _e( 'Please Select', 'max-user-sys' ); ?></option>
+              <option value="cce" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'cce' ) {echo 'selected="selected"';} ?>><?php _e( 'Chinese Central Enterprise', 'max-user-sys' ); ?></option>
+              <option value="csoe" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'csoe' ) {echo 'selected="selected"';} ?>><?php _e( 'Chinese State-Owned Enterprise', 'max-user-sys' ); ?></option>
+              <option value="cpe" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'cpe' ) {echo 'selected="selected"';} ?>><?php _e( 'Chinese Private Enterprise', 'max-user-sys' ); ?></option>
+              <option value="pts" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'pts' ) {echo 'selected="selected"';} ?>><?php _e( 'Partnership', 'max-user-sys' ); ?></option>
+              <option value="alcc" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'alcc' ) {echo 'selected="selected"';} ?>><?php _e( 'Australian Local Chinese Company', 'max-user-sys' ); ?></option>
+              <option value="alc" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'alc' ) {echo 'selected="selected"';} ?>><?php _e( 'Australian Local Company', 'max-user-sys' ); ?></option>
+              <option value="oth" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'oth' ) {echo 'selected="selected"';} ?>><?php _e( 'Other(Fill Details in Comment)', 'max-user-sys' ); ?></option>
             </select>
           </td>
           <td>
@@ -1007,18 +921,18 @@ class Personalize_Login_Plugin {
         </tr>
 
         <tr>
-          <th><label for="company_branch"><?php echo $strings['company_branch']; ?></label></th>
-          <th><label for="comment"><?php echo $strings['comment']; ?></label></th>
+          <th><label for="company_branch"><?php _e( 'Company Branch', 'max-user-sys' ); ?></label></th>
+          <th><label for="comment"><?php _e( 'Comment', 'max-user-sys' ); ?></label></th>
         </tr>
         <tr>
           <td>
             <select name="company_branch" id="company_branch">
-              <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'sel' ) echo 'selected="selected"'; ?>><?php echo $strings['sel']; ?></option>
-              <option value="Sydney" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Sydney' ) echo 'selected="selected"'; ?>><?php echo $strings['sydney']; ?></option>
-              <option value="Melbourne" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Melbourne' ) echo 'selected="selected"'; ?>><?php echo $strings['melbourne']; ?></option>
-              <option value="Perth" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Perth' ) echo 'selected="selected"'; ?>><?php echo $strings['perth']; ?></option>
-              <option value="Brisbane" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Brisbane' ) echo 'selected="selected"'; ?>><?php echo $strings['brisbane']; ?></option>
-              <option value="Adelaide" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Adelaide' ) echo 'selected="selected"'; ?>><?php echo $strings['adelaide']; ?></option>
+              <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'sel' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user-sys' ); ?></option>
+              <option value="Sydney" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Sydney' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user-sys' ); ?></option>
+              <option value="Melbourne" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Melbourne' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user-sys' ); ?></option>
+              <option value="Perth" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Perth' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user-sys' ); ?></option>
+              <option value="Brisbane" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Brisbane' ) echo 'selected="selected"'; ?>><?php _e( 'Brisbane Branch', 'max-user-sys' ); ?></option>
+              <option value="Adelaide" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Adelaide' ) echo 'selected="selected"'; ?>><?php _e( 'Adelaide Branch', 'max-user-sys' ); ?></option>
             </select>
           </td>
           <td>

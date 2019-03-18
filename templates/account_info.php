@@ -81,36 +81,6 @@
         )
     );
 
-    $lang = get_bloginfo("language");
-
-    $strings = $dict[$lang];
-
-    $ccca_profile = get_the_author_meta( 'ccca_profile', $current_user->ID );
-
-    if ( ! is_array( $ccca_profile ) ) {
-        $ccca_profile = array(
-            'company_name'      => '',
-            'company_address'   => '',
-            'company_phone'     => '',
-            'company_website'   => '',
-            'company_type'      => 'cce',
-            'company_industry'  => '',
-            'company_branch'    => 'Sydney',
-            'pic_fname'         => '',
-            'pic_lname'         => '',
-            'pic_title'         => '',
-            'pic_mobile'        => '',
-            'pic_phone'         => '',
-            'pic_email'         => '',
-            'contact_1_name'    => '',
-            'contact_1_mobile'  => '',
-            'contact_1_email'   => '',
-            'contact_2_name'    => '',
-            'contact_2_mobile'  => '',
-            'contact_2_email'   => '',
-            'comment'           => '',
-        );
-    }
     $my_para = get_query_var( 'para' );
 ?>
 <?php if ( $my_para == 'edit' ) { ?>
@@ -143,74 +113,74 @@
     <div class="row row-sm-offset">
       <div class="col-md-4 multi-horizontal">
         <div class="form-group">
-          <label class="form-control-label mbr-fonts-style display-3"><?php echo $strings['company_information']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-3"><?php _e( 'Company Information', 'max-user-sys' ); ?></label><br>
           <label class="form-control-label mbr-fonts-style display-7" for="email">Company Email(Will be used as Username)</label><br>
           <span><input type="text" name="email" id="email" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_name"><?php echo $strings['company_name']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_name"><?php _e( 'Company Name', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="company_name" id="company_name" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_address"><?php echo $strings['company_address']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_address"><?php _e( 'Company Address', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="company_address" id="company_address" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_phone"><?php echo $strings['company_telephone']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_phone"><?php _e( 'Company Telephone', 'max-user-sys' ); ?></label><br>
           <span><input type="tel" name="company_phone" id="company_phone" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_website"><?php echo $strings['company_website']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_website"><?php _e( 'Company Website', 'max-user-sys' ); ?></label><br>
           <span><input type="url" name="company_website" id="company_website" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_industry"><?php echo $strings['company_industry']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_industry"><?php _e( 'Company Industry', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="company_industry" id="company_industry" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_type"><?php echo $strings['company_type']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_type"><?php _e( 'Company Type', 'max-user-sys' ); ?></label><br>
           <span><select name="company_type" id="company_type" class="form-control">
-            <option value="sel" data-installed="1" selected="selected"><?php echo $strings['sel']; ?></option>
-            <option value="cce" data-installed="1"><?php echo $strings['cce']; ?></option>
-            <option value="csoe" data-installed="1"><?php echo $strings['csoe']; ?></option>
-            <option value="cpe" data-installed="1"><?php echo $strings['cpe']; ?></option>
-            <option value="pts" data-installed="1"><?php echo $strings['pts']; ?></option>
-            <option value="alcc" data-installed="1"><?php echo $strings['alcc']; ?></option>
-            <option value="alc" data-installed="1"><?php echo $strings['alc']; ?></option>
-            <option value="oth" data-installed="1"><?php echo $strings['oth']; ?></option>
+            <option value="sel" data-installed="1" selected="selected"><?php _e( 'Please Select', 'max-user-sys' ); ?></option>
+            <option value="cce" data-installed="1"><?php _e( 'Chinese Central Enterprise', 'max-user-sys' ); ?></option>
+            <option value="csoe" data-installed="1"><?php _e( 'Chinese State-Owned Enterprise', 'max-user-sys' ); ?></option>
+            <option value="cpe" data-installed="1"><?php _e( 'Chinese Private Enterprise', 'max-user-sys' ); ?></option>
+            <option value="pts" data-installed="1"><?php _e( 'Partnership', 'max-user-sys' ); ?></option>
+            <option value="alcc" data-installed="1"><?php _e( 'Australian Local Chinese Company', 'max-user-sys' ); ?></option>
+            <option value="alc" data-installed="1"><?php _e( 'Australian Local Company', 'max-user-sys' ); ?></option>
+            <option value="oth" data-installed="1"><?php _e( 'Other(Fill Details in Comment)', 'max-user-sys' ); ?></option>
           </select></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="company_branch"><?php echo $strings['company_branch']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="company_branch"><?php _e( 'Company Branch', 'max-user-sys' ); ?></label><br>
           <span><select name="company_branch" id="company_branch" class="form-control">
-            <option value="sel" data-installed="1" selected="selected"><?php echo $strings['sel']; ?></option>
-            <option value="Sydney" data-installed="1"><?php echo $strings['sydney']; ?></option>
-            <option value="Melbourne" data-installed="1"><?php echo $strings['melbourne']; ?></option>
-            <option value="Perth" data-installed="1"><?php echo $strings['perth']; ?></option>
-            <option value="Brisbane" data-installed="1"><?php echo $strings['brisbane']; ?></option>
-            <option value="Adelaide" data-installed="1"><?php echo $strings['adelaide']; ?></option>
+            <option value="sel" data-installed="1" selected="selected"><?php _e( 'Please Select', 'max-user-sys' ); ?></option>
+            <option value="Sydney" data-installed="1"><?php _e( 'Sydney Branch', 'max-user-sys' ); ?></option>
+            <option value="Melbourne" data-installed="1"><?php _e( 'Melbourne Branch', 'max-user-sys' ); ?></option>
+            <option value="Perth" data-installed="1"><?php _e( 'Perth Branch', 'max-user-sys' ); ?></option>
+            <option value="Brisbane" data-installed="1"><?php _e( 'Brisbane Branch', 'max-user-sys' ); ?></option>
+            <option value="Adelaide" data-installed="1"><?php _e( 'Adelaide Branch', 'max-user-sys' ); ?></option>
           </select></span>
         </div>
       </div>
       <div class="col-md-4 multi-horizontal">
         <div class="form-group">
-          <label class="form-control-label mbr-fonts-style display-3"><?php echo $strings['person_in_charge']; ?></label><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="first_name"><?php echo $strings['first_name']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-3"><?php _e( 'Person in Charge', 'max-user-sys' ); ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="first_name"><?php _e( 'Person in Charge First Name', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="first_name" id="first-name" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="last_name"><?php echo $strings['last_name']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="last_name"><?php _e( 'Person in Charge Last Name', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="last_name" id="last-name" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="pic_title"><?php echo $strings['title']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="pic_title"><?php _e( 'Person in Charge Title', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="pic_title" id="pic_title" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="pic_mobile"><?php echo $strings['mobile']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="pic_mobile"><?php _e( 'Person in Charge Mobile', 'max-user-sys' ); ?></label><br>
           <span><input type="tel" name="pic_mobile" id="pic_mobile" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="pic_phone"><?php echo $strings['telephone']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="pic_phone"><?php _e( 'Person in Charge Telephone', 'max-user-sys' ); ?></label><br>
           <span><input type="tel" name="pic_phone" id="pic_phone" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="pic_email"><?php echo $strings['email']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="pic_email"><?php _e( 'Person in Charge Email', 'max-user-sys' ); ?></label><br>
           <span><input type="email" name="pic_email" id="pic_email" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="comment"><?php echo $strings['comment']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="comment"><?php _e( 'Comment', 'max-user-sys' ); ?></label><br>
           <span><textarea name="comment" id="comment" rows="3" class="area form-control"></textarea></span>
         </div>
       </div>
       <div class="col-md-4 multi-horizontal">
         <div class="form-group">
-          <label class="form-control-label mbr-fonts-style display-3"><?php echo $strings['other_contacts']; ?></label><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="contact_1_name"><?php echo $strings['first_contact_name']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-3"><?php _e( 'Other Contacts', 'max-user-sys' ); ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="contact_1_name"><?php _e( 'First Contact Name', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="contact_1_name" id="contact_1_name" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="contact_1_mobile"><?php echo $strings['first_contact_mobile']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="contact_1_mobile"><?php _e( 'First Contact Mobile', 'max-user-sys' ); ?></label><br>
           <span><input type="tel" name="contact_1_mobile" id="contact_1_mobile" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="contact_1_email"><?php echo $strings['first_contact_email']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="contact_1_email"><?php _e( 'First Contact Email', 'max-user-sys' ); ?></label><br>
           <span><input type="email" name="contact_1_email" id="contact_1_email" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="contact_2_name"><?php echo $strings['second_contact_name']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="contact_2_name"><?php _e( 'First Contact Name', 'max-user-sys' ); ?></label><br>
           <span><input type="text" name="contact_2_name" id="contact_2_name" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="contact_2_mobile"><?php echo $strings['second_contact_mobile']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="contact_2_mobile"><?php _e( 'First Contact Mobile', 'max-user-sys' ); ?></label><br>
           <span><input type="tel" name="contact_2_mobile" id="contact_2_mobile" class="form-control"></span><br>
-          <label class="form-control-label mbr-fonts-style display-7" for="contact_2_email"><?php echo $strings['second_contact_email']; ?></label><br>
+          <label class="form-control-label mbr-fonts-style display-7" for="contact_2_email"><?php _e( 'First Contact Email', 'max-user-sys' ); ?></label><br>
           <span><input type="email" name="contact_2_email" id="contact_2_email" class="form-control"></span>
         </div>
       </div>
@@ -256,56 +226,84 @@
   update_usermeta( $current_user->ID, 'ccca_profile', $ccca_meta_profile ); ?>
   <h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php print_r($ccca_meta_profile); ?></h2>
 <?php } ?>
-<h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php $strings['ccca_member_profile']; ?></h2>
+<h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user-sys' ); ?></h2>
 
 <table class="form-table table isSearch" id="ccca-member-profile">
   <thead>
     <tr class="table-heads ">
-      <th class="head-item mbr-fonts-style display-7"><h3><?php echo $strings['company_information']; ?></h3></th>
-      <th class="head-item mbr-fonts-style display-7"><h3><?php echo $strings['person_in_charge']; ?></h3></th>
-      <th class="head-item mbr-fonts-style display-7"><h3><?php echo $strings['other_contacts']; ?></h3></th>
+      <th class="head-item mbr-fonts-style display-7"><h3><?php _e( 'Company Information', 'max-user-sys' ); ?></h3></th>
+      <th class="head-item mbr-fonts-style display-7"><h3><?php _e( 'Person in Charge', 'max-user-sys' ); ?></h3></th>
+      <th class="head-item mbr-fonts-style display-7"><h3><?php _e( 'Other Contacts', 'max-user-sys' ); ?></h3></th>
     </tr>
   </thead>
+
+<?php $ccca_profile = get_the_author_meta( 'ccca_profile', $current_user->ID );
+
+  if ( ! is_array( $ccca_profile ) ) {
+      $ccca_profile = array(
+          'company_name'      => '',
+          'company_address'   => '',
+          'company_phone'     => '',
+          'company_website'   => '',
+          'company_type'      => 'cce',
+          'company_industry'  => '',
+          'company_branch'    => 'Sydney',
+          'pic_fname'         => '',
+          'pic_lname'         => '',
+          'pic_title'         => '',
+          'pic_mobile'        => '',
+          'pic_phone'         => '',
+          'pic_email'         => '',
+          'contact_1_name'    => '',
+          'contact_1_mobile'  => '',
+          'contact_1_email'   => '',
+          'contact_2_name'    => '',
+          'contact_2_mobile'  => '',
+          'contact_2_email'   => '',
+          'comment'           => '',
+      );
+  } ?>
+
   <tbody>
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_name']; ?>: <?php echo esc_attr( $ccca_profile['company_name'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['first_name']; ?>: <?php echo esc_attr( $ccca_profile['pic_fname'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['first_contact_name']; ?>: <?php echo esc_attr( $ccca_profile['contact_1_name'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_name'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Person in Charge First Name', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['pic_fname'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'First Contact Name', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['contact_1_name'] ); ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_address']; ?>: <?php echo esc_attr( $ccca_profile['company_address'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['last_name']; ?>: <?php echo esc_attr( $ccca_profile['pic_lname'] ); ?></label></th>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['first_contact_mobile']; ?>: <?php echo esc_attr( $ccca_profile['contact_1_mobile'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Address', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_address'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Person in Charge Last Name', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['pic_lname'] ); ?></label></th>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'First Contact Mobile', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['contact_1_mobile'] ); ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_telephone']; ?>: <?php echo esc_attr( $ccca_profile['company_phone'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['title']; ?>: <?php echo esc_attr( $ccca_profile['pic_title'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['first_contact_email']; ?>: <?php echo esc_attr( $ccca_profile['contact_1_email'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Telephone', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_phone'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Person in Charge Title', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['pic_title'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'First Contact Email', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['contact_1_email'] ); ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_website']; ?>: <?php echo esc_attr( $ccca_profile['company_website'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['mobile']; ?>: <?php echo esc_attr( $ccca_profile['pic_mobile'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['second_contact_name']; ?>: <?php echo esc_attr( $ccca_profile['contact_2_name'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Website', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_website'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Person in Charge Mobile', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['pic_mobile'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'First Contact Name', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['contact_2_name'] ); ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_type']; ?>: <?php echo esc_attr( $ccca_profile['company_type'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['telephone']; ?>: <?php echo esc_attr( $ccca_profile['pic_phone'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['second_contact_mobile']; ?>: <?php echo esc_attr( $ccca_profile['contact_2_mobile'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Type', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_type'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Person in Charge Telephone', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['pic_phone'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'First Contact Mobile', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['contact_2_mobile'] ); ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_industry']; ?>: <?php echo esc_attr( $ccca_profile['company_industry'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['email']; ?>: <?php echo esc_attr( $ccca_profile['pic_email'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['second_contact_email']; ?>: <?php echo esc_attr( $ccca_profile['contact_2_email'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Industry', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_industry'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Person in Charge Email', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['pic_email'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'First Contact Email', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['contact_2_email'] ); ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['company_branch']; ?>: <?php echo esc_attr( $ccca_profile['company_branch'] ); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php echo $strings['comment']; ?>: <?php echo esc_attr( $ccca_profile['comment'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['company_branch'] ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user-sys' ); ?>: <?php echo esc_attr( $ccca_profile['comment'] ); ?></td>
   </tr>
   <tbody>
 </table>
