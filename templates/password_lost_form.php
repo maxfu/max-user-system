@@ -1,6 +1,6 @@
 <div id="password-lost-form" class="widecolumn">
     <?php if ( $attributes['show_title'] ) : ?>
-        <h3><?php _e( 'Forgot Your Password?', 'max-user-sys' ); ?></h3>
+        <h3><?php _e( 'Forgot Your Password?', 'max-user' ); ?></h3>
     <?php endif; ?>
 
     <?php if ( count( $attributes['errors'] ) > 0 ) : ?>
@@ -22,13 +22,13 @@
 
     <form id="lostpasswordform" action="<?php echo wp_lostpassword_url(); ?>" method="post">
         <p class="form-row">
-            <label for="user_login"><?php _e( 'Email', 'max-user-sys' ); ?>
+            <label for="user_login"><?php _e( 'Email', 'max-user' ); ?>
             <input type="text" name="user_login" id="user_login">
         </p>
 
         <p class="lostpassword-submit">
             <input type="submit" name="submit" class="lostpassword-button"
-                   value="<?php _e( 'Reset Password', 'max-user-sys' ); ?>"/>
+                   value="<?php _e( 'Reset Password', 'max-user' ); ?>"/>
         </p>
     </form>
 </div>
