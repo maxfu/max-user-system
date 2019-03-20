@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: Max User System\n"
+"Project-Id-Version: MaxFu User System\n"
 "Language: zh-CN\n"
 
 #: 
@@ -154,4 +154,149 @@ msgstr "您的密码已被更改。您现在可以登录。"
 #: 
 msgid "You have signed out. Would you like to sign in again?"
 msgstr "你已经退出了。你想再次登录吗？"
+
+#: 
+#, fuzzy
+msgid "Company Information"
+msgstr "公司信息"
+
+#: 
+msgid "Person in Charge First Name"
+msgstr "负责人名字"
+
+#: 
+msgid "First Contact Name"
+msgstr "第一联系人姓名"
+
+#: 
+msgid "Company Address"
+msgstr "公司地址"
+
+#: 
+msgid "Person in Charge Last Name"
+msgstr "负责人姓氏"
+
+#: 
+msgid "First Contact Mobile"
+msgstr "第一联系人手机"
+
+#: 
+msgid "Company Telephone"
+msgstr "公司电话"
+
+#: 
+msgid "Person in Charge Title"
+msgstr "负责人职位"
+
+#: 
+msgid "First Contact Email"
+msgstr "第一联系人邮箱"
+
+#: 
+msgid "Company Name"
+msgstr "公司名称"
+
+#: 
+msgid "Company Website"
+msgstr "公司网站"
+
+#: 
+msgid "Company Type"
+msgstr "公司属性"
+
+#: 
+msgid "Company Branch"
+msgstr "所属分会"
+
+#: 
+msgid "Company Industry"
+msgstr "公司行业"
+
+#: 
+msgid "Person in Charge"
+msgstr "负责人信息"
+
+#: 
+msgid "Person in Charge Mobile"
+msgstr "负责人手机"
+
+#: 
+msgid "Person in Charge Email"
+msgstr "负责人邮件"
+
+#: 
+msgid "Person in Charge Telephone"
+msgstr "负责人电话"
+
+#: 
+msgid "Other Contacts"
+msgstr "其他联系人"
+
+#: 
+msgid "Second Contact Name"
+msgstr "第二联系人姓名"
+
+#: 
+msgid "Second Contact Mobile"
+msgstr "第二联系人手机"
+
+#: 
+msgid "Second Contact Email"
+msgstr "第二联系人邮箱"
+
+#: 
+msgid "Chinese Central Enterprise"
+msgstr "中资央企"
+
+#: 
+msgid "Chinese State-Owned Enterprise"
+msgstr "中资国企"
+
+#: 
+msgid "Chinese Private Enterprise"
+msgstr "中资民营"
+
+#: 
+msgid "Partnership"
+msgstr "合伙制"
+
+#: 
+msgid "Australian Local Chinese Company"
+msgstr "澳州当地华人企业"
+
+#: 
+msgid "Australian Local Company"
+msgstr "澳洲当地的外资企业"
+
+#: 
+msgid "Other(Fill Details in Comment)"
+msgstr "其他(请在备注中填写)"
+
+#: 
+msgid "Sydney Branch"
+msgstr "悉尼分会"
+
+#: 
+msgid "Perth Branch"
+msgstr "珀斯分会"
+
+#: 
+msgid "Melbourne Branch"
+msgstr "墨尔本分会"
+
+#: 
+msgid "Brisbane Branch"
+msgstr "布里斯班分会"
+
+#: 
+msgid "Adelaide Branch"
+msgstr "阿德莱德分会"
+
+#: 
+msgid "Comment"
+msgstr "备注"
+
+#: 
+msgid "Please Select"
+msgstr "请选择"
 

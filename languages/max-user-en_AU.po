@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: Max User System\n"
+"Project-Id-Version: MaxFu User System\n"
 "Language: en-au\n"
 
 #: 
@@ -93,65 +93,209 @@ msgstr "CCCA Member Profile"
 
 #: 
 msgid "Sign In"
-msgstr ""
+msgstr "Sign In"
 
 #: 
 msgid "Your Account"
-msgstr ""
+msgstr "Your Account"
 
 #: 
 msgid "Register"
-msgstr ""
+msgstr "Register"
 
 #: 
 msgid "Forgot Your Password?"
-msgstr ""
+msgstr "Forgot Your Password?"
 
 #: 
 msgid "Pick a New Password"
-msgstr ""
+msgstr "Pick a New Password"
 
 #: 
 msgid "Invalid password reset link."
-msgstr ""
+msgstr "Invalid password reset link."
 
 #: 
 msgid "Author Archives for "
-msgstr ""
+msgstr "Author Archives for "
 
 #: 
 msgid "Note: Your password will be generated automatically and sent to your email address."
-msgstr ""
+msgstr "Note: Your password will be generated automatically and sent to your email address."
 
 #: 
 msgid "New password"
-msgstr ""
+msgstr "New password"
 
 #: 
 msgid "Repeat new password"
-msgstr ""
+msgstr "Repeat new password"
 
 #: 
 msgid "Reset Password"
-msgstr ""
+msgstr "Reset Password"
 
 #: 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: 
 msgid "You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered."
-msgstr ""
+msgstr "You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered."
 
 #: 
 msgid "Check your email for a link to reset your password."
-msgstr ""
+msgstr "Check your email for a link to reset your password."
 
 #: 
 msgid "Your password has been changed. You can sign in now."
-msgstr ""
+msgstr "Your password has been changed. You can sign in now."
 
 #: 
 msgid "You have signed out. Would you like to sign in again?"
-msgstr ""
+msgstr "You have signed out. Would you like to sign in again?"
+
+#: 
+msgid "Company Information"
+msgstr "Company Information"
+
+#: 
+msgid "Person in Charge First Name"
+msgstr "Person in Charge First Name"
+
+#: 
+msgid "First Contact Name"
+msgstr "First Contact Name"
+
+#: 
+msgid "Company Address"
+msgstr "Company Address"
+
+#: 
+msgid "Person in Charge Last Name"
+msgstr "Person in Charge Last Name"
+
+#: 
+msgid "First Contact Mobile"
+msgstr "First Contact Mobile"
+
+#: 
+msgid "Company Telephone"
+msgstr "Company Telephone"
+
+#: 
+msgid "Person in Charge Title"
+msgstr "Person in Charge Title"
+
+#: 
+msgid "First Contact Email"
+msgstr "First Contact Email"
+
+#: 
+msgid "Company Name"
+msgstr "Company Name"
+
+#: 
+msgid "Company Website"
+msgstr "Company Website"
+
+#: 
+msgid "Company Type"
+msgstr "Company Type"
+
+#: 
+msgid "Company Branch"
+msgstr "Company Branch"
+
+#: 
+msgid "Company Industry"
+msgstr "Company Industry"
+
+#: 
+msgid "Person in Charge"
+msgstr "Person in Charge"
+
+#: 
+msgid "Person in Charge Mobile"
+msgstr "Person in Charge Mobile"
+
+#: 
+msgid "Person in Charge Email"
+msgstr "Person in Charge Email"
+
+#: 
+msgid "Person in Charge Telephone"
+msgstr "Person in Charge Telephone"
+
+#: 
+msgid "Other Contacts"
+msgstr "Other Contacts"
+
+#: 
+msgid "Second Contact Name"
+msgstr "Second Contact Name"
+
+#: 
+msgid "Second Contact Mobile"
+msgstr "Second Contact Mobile"
+
+#: 
+msgid "Second Contact Email"
+msgstr "Second Contact Email"
+
+#: 
+msgid "Chinese Central Enterprise"
+msgstr "Chinese Central Enterprise"
+
+#: 
+msgid "Chinese State-Owned Enterprise"
+msgstr "Chinese State-Owned Enterprise"
+
+#: 
+msgid "Chinese Private Enterprise"
+msgstr "Chinese Private Enterprise"
+
+#: 
+msgid "Partnership"
+msgstr "Partnership"
+
+#: 
+msgid "Australian Local Chinese Company"
+msgstr "Australian Local Chinese Company"
+
+#: 
+msgid "Australian Local Company"
+msgstr "Australian Local Company"
+
+#: 
+msgid "Other(Fill Details in Comment)"
+msgstr "Other(Fill Details in Comment)"
+
+#: 
+msgid "Sydney Branch"
+msgstr "Sydney Branch"
+
+#: 
+msgid "Perth Branch"
+msgstr "Perth Branch"
+
+#: 
+msgid "Melbourne Branch"
+msgstr "Melbourne Branch"
+
+#: 
+msgid "Brisbane Branch"
+msgstr "Brisbane Branch"
+
+#: 
+msgid "Adelaide Branch"
+msgstr "Adelaide Branch"
+
+#: 
+msgid "Comment"
+msgstr "Comment"
+
+#: 
+msgid "Please Select"
+msgstr "Please Select"
 
