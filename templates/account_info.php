@@ -143,7 +143,6 @@
 
   /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
   update_usermeta( $current_user->ID, 'ccca_profile', $ccca_meta_profile ); ?>
-  <h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php print_r($ccca_meta_profile); ?></h2>
 <?php } ?>
 <h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user' ); ?></h2>
 
