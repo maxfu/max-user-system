@@ -12,12 +12,7 @@
     <?php endif; ?>
 
     <p>
-        <?php
-            _e(
-                "Enter your email address and we'll send you a link you can use to pick a new password.",
-                'personalize_login'
-            );
-        ?>
+        <?php _e('Enter your email address and we\'ll send you a link you can use to pick a new password.', 'max-user'); ?>
     </p>
 
     <form id="lostpasswordform" action="<?php echo wp_lostpassword_url(); ?>" method="post">
@@ -27,8 +22,7 @@
         </p>
 
         <p class="lostpassword-submit">
-            <input type="submit" name="submit" class="lostpassword-button"
-                   value="<?php _e( 'Reset Password', 'max-user' ); ?>"/>
+            <input type="submit" name="submit" class="lostpassword-button" value="<?php _e( 'Reset Password', 'max-user' ); ?>"/>
         </p>
     </form>
 </div>

@@ -25,9 +25,9 @@ class Personalize_Login_Plugin {
         add_shortcode( 'custom-password-lost-form', array( $this, 'render_password_lost_form' ) );
         add_shortcode( 'custom-password-reset-form', array( $this, 'render_password_reset_form' ) );
         add_shortcode( 'account-info', array( $this, 'render_account_info' ) );
-//        add_action( 'login_form_login', array( $this, 'redirect_to_custom_login' ) );
+        add_action( 'login_form_login', array( $this, 'redirect_to_custom_login' ) );
         add_filter( 'authenticate', array( $this, 'maybe_redirect_at_authenticate' ), 101, 3 );
-//        add_action( 'wp_logout', array( $this, 'redirect_after_logout' ) );
+        add_action( 'wp_logout', array( $this, 'redirect_after_logout' ) );
         add_filter( 'query_vars', array( $this, 'mus_add_custom_query_var' ) );
         add_filter( 'login_redirect', array( $this, 'redirect_after_login' ), 10, 3 );
         add_action( 'login_form_register', array( $this, 'redirect_to_custom_register' ) );
@@ -39,11 +39,6 @@ class Personalize_Login_Plugin {
         add_action( 'login_form_resetpass', array( $this, 'redirect_to_custom_password_reset' ) );
         add_action( 'login_form_rp', array( $this, 'do_password_reset' ) );
         add_action( 'login_form_resetpass', array( $this, 'do_password_reset' ) );
-        // Extra User Fields
-        add_action( 'show_user_profile', array( $this, 'my_show_extra_profile_fields' ) );
-        add_action( 'edit_user_profile', array( $this, 'my_show_extra_profile_fields' ) );
-        add_action( 'personal_options_update', array( $this, 'my_save_extra_profile_fields' ) );
-        add_action( 'edit_user_profile_update', array( $this, 'my_save_extra_profile_fields' ) );
     }
 
     public function mus_add_custom_query_var( $vars ){
@@ -431,10 +426,11 @@ class Personalize_Login_Plugin {
                 $redirect_url = add_query_arg( 'register-errors', 'closed', $redirect_url );
             } else {
                 $email = $_POST['email'];
-                $first_name = sanitize_text_field( $_POST['first_name'] );
-                $last_name = sanitize_text_field( $_POST['last_name'] );
+                $first_name = sanitize_text_field( $_POST['company_name_en'] );
+                $last_name = sanitize_text_field( $_POST['company_name_zh'] );
+                $user_url = $_POST['company_website'];
 
-                $result = $this->register_user( $email, $first_name, $last_name );
+                $result = $this->register_user( $email, $first_name, $last_name, $user_url );
 
                 if ( is_wp_error( $result ) ) {
                     // Parse errors into a string and append as parameter to redirect
@@ -443,30 +439,14 @@ class Personalize_Login_Plugin {
                 } else {
                     $current_user = get_current_user_id();
                     wp_set_current_user( $result );
-                    $ccca_meta_profile = array(
-                        'company_name'      => $_POST['company_name'],
-                        'company_address'   => $_POST['company_address'],
-                        'company_phone'     => $_POST['company_phone'],
-                        'company_website'   => $_POST['company_website'],
-                        'company_type'      => $_POST['company_type'],
-                        'company_industry'  => $_POST['company_industry'],
-                        'company_branch'    => $_POST['company_branch'],
-                        'pic_fname'         => $_POST['first_name'],
-                        'pic_lname'         => $_POST['last_name'],
-                        'pic_title'         => $_POST['pic_title'],
-                        'pic_mobile'        => $_POST['pic_mobile'],
-                        'pic_phone'         => $_POST['pic_phone'],
-                        'pic_email'         => $_POST['pic_email'],
-                        'contact_1_name'    => $_POST['contact_1_name'],
-                        'contact_1_mobile'  => $_POST['contact_1_mobile'],
-                        'contact_1_email'   => $_POST['contact_1_email'],
-                        'contact_2_name'    => $_POST['contact_2_name'],
-                        'contact_2_mobile'  => $_POST['contact_2_mobile'],
-                        'contact_2_email'   => $_POST['contact_2_email'],
-                        'comment'           => $_POST['comment'],
-                    );
                     /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
-                	  update_usermeta( $result, 'ccca_profile', $ccca_meta_profile );
+                	  update_usermeta( $result, 'company_email', sanitize_email($_POST['company_email']) );
+                    update_usermeta( $result, 'company_address', $_POST['company_address'] );
+                    update_usermeta( $result, 'company_phone', $_POST['company_phone'] );
+                    update_usermeta( $result, 'company_branch', $_POST['company_branch'] );
+                    update_usermeta( $result, 'contact_name', sanitize_text_field($_POST['contact_name']) );
+                    update_usermeta( $result, 'contact_email', sanitize_email($_POST['contact_email']) );
+                    update_usermeta( $result, 'comment', sanitize_textarea_field($_POST['comment']) );
 
                     wp_set_current_user( $current_user );
 
@@ -720,7 +700,7 @@ class Personalize_Login_Plugin {
      *
      * @return int|WP_Error         The id of the user that was created, or error if failed.
      */
-    private function register_user( $email, $first_name, $last_name ) {
+    private function register_user( $email, $first_name, $last_name, $user_url ) {
         $errors = new WP_Error();
 
         // Email address is used as both username and email. It is also the only
@@ -744,238 +724,13 @@ class Personalize_Login_Plugin {
             'user_pass'     => $password,
             'first_name'    => $first_name,
             'last_name'     => $last_name,
-            'nickname'      => $first_name,
+            'user_url'      => $user_url,
         );
 
         $user_id = wp_insert_user( $user_data );
         wp_new_user_notification( $user_id, $password );
 
         return $user_id;
-    }
-
-    /**
-     * Extra User Fields
-     */
-    public function my_show_extra_profile_fields( $user ) {
-      $ccca_profile = get_the_author_meta( 'ccca_profile', $user->ID );
-
-    	if ( ! is_array( $ccca_profile ) ) {
-          $ccca_profile = array(
-              'company_name'      => '',
-              'company_address'   => '',
-              'company_phone'     => '',
-              'company_website'   => '',
-              'company_type'      => 'sel',
-              'company_industry'  => '',
-              'company_branch'    => 'sel',
-              'pic_fname'         => '',
-              'pic_lname'         => '',
-              'pic_title'         => '',
-              'pic_mobile'        => '',
-              'pic_phone'         => '',
-              'pic_email'         => '',
-              'contact_1_name'    => '',
-              'contact_1_mobile'  => '',
-              'contact_1_email'   => '',
-              'contact_2_name'    => '',
-              'contact_2_mobile'  => '',
-              'contact_2_email'   => '',
-              'comment'           => '',
-            );
-        }
-
-      ?>
-      <style type="text/css">
-        #ccca-member-profile th {
-          margin-bottom: 9px;
-          padding: 0 10px;
-          line-height:1.3;
-          vertical-align:middle;
-        }
-        #ccca-member-profile td {
-          margin-bottom: 9px;
-          padding: 0px 10px;
-          line-height:1.3;
-          vertical-align:middle;
-        }
-        #ccca-member-profile h3 {
-          margin: 0;
-        }
-      </style>
-
-    	<h2><?php _e('CCCA Member Profile', 'max-user'); ?></h2>
-
-    	<table class="form-table" id="ccca-member-profile">
-
-        <tr>
-    			<th><h3><?php _e( 'Company Information', 'max-user' ); ?></h3></th>
-          <th><h3><?php _e( 'Person in Charge', 'max-user' ); ?></h3></th>
-          <th><h3><?php _e( 'Other Contacts', 'max-user' ); ?></h3></th>
-    		</tr>
-
-        <tr>
-          <th><label for="company_name"><?php _e( 'Company Name', 'max-user' ); ?></label></th>
-          <th><label for="pic_fname"><?php _e( 'Person in Charge First Name', 'max-user' ); ?></label></th>
-          <th><label for="contact_1_name"><?php _e( 'First Contact Name', 'max-user' ); ?></label></th>
-        </tr>
-        <tr>
-          <td>
-    				<input type="text" name="company_name" id="company_name" value="<?php echo esc_attr( $ccca_profile['company_name'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="pic_fname" id="pic_fname" value="<?php echo esc_attr( $ccca_profile['pic_fname'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="contact_1_name" id="contact_1_name" value="<?php echo esc_attr( $ccca_profile['contact_1_name'] ); ?>" class="regular-text" /><br />
-    			</td>
-        </tr>
-
-        <tr>
-          <th><label for="company_address"><?php _e( 'Company Address', 'max-user' ); ?></label></th>
-          <th><label for="pic_lname"><?php _e( 'Person in Charge Last Name', 'max-user' ); ?></label></th>
-          <th><label for="contact_1_mobile"><?php _e( 'First Contact Mobile', 'max-user' ); ?></label></th>
-        </tr>
-        <tr>
-          <td>
-    				<input type="text" name="company_address" id="company_address" value="<?php echo esc_attr( $ccca_profile['company_address'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="pic_lname" id="pic_lname" value="<?php echo esc_attr( $ccca_profile['pic_lname'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="contact_1_mobile" id="contact_1_mobile" value="<?php echo esc_attr( $ccca_profile['contact_1_mobile'] ); ?>" class="regular-text" /><br />
-    			</td>
-        </tr>
-
-        <tr>
-          <th><label for="company_phone"><?php _e( 'Company Telephone', 'max-user' ); ?></label></th>
-          <th><label for="pic_title"><?php _e( 'Person in Charge Title', 'max-user' ); ?></label></th>
-          <th><label for="contact_1_email"><?php _e( 'First Contact Email', 'max-user' ); ?></label></th>
-        </tr>
-        <tr>
-          <td>
-    				<input type="text" name="company_phone" id="company_phone" value="<?php echo esc_attr( $ccca_profile['company_phone'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="pic_title" id="pic_title" value="<?php echo esc_attr( $ccca_profile['pic_title'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="contact_1_email" id="contact_1_email" value="<?php echo esc_attr( $ccca_profile['contact_1_email'] ); ?>" class="regular-text" /><br />
-    			</td>
-        </tr>
-
-    		<tr>
-          <th><label for="company_website"><?php _e( 'Company Website', 'max-user' ); ?></label></th>
-          <th><label for="pic_mobile"><?php _e( 'Person in Charge Mobile', 'max-user' ); ?></label></th>
-          <th><label for="contact_2_name"><?php _e( 'Second Contact Name', 'max-user' ); ?></label></th>
-    		</tr>
-        <tr>
-          <td>
-    				<input type="text" name="company_website" id="company_website" value="<?php echo esc_attr( $ccca_profile['company_website'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="pic_mobile" id="pic_mobile" value="<?php echo esc_attr( $ccca_profile['pic_mobile'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="contact_2_name" id="contact_2_name" value="<?php echo esc_attr( $ccca_profile['contact_2_name'] ); ?>" class="regular-text" /><br />
-    			</td>
-    		</tr>
-
-        <tr>
-          <th><label for="company_industry"><?php _e( 'Company Industry', 'max-user' ); ?></label></th>
-          <th><label for="pic_phone"><?php _e( 'Person in Charge Telephone', 'max-user' ); ?></label></th>
-          <th><label for="contact_2_mobile"><?php _e( 'Second Contact Mobile', 'max-user' ); ?></label></th>
-    		</tr>
-        <tr>
-          <td>
-    				<input type="text" name="company_industry" id="company_industry" value="<?php echo esc_attr( $ccca_profile['company_industry'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="pic_phone" id="pic_phone" value="<?php echo esc_attr( $ccca_profile['pic_phone'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="contact_2_mobile" id="contact_2_mobile" value="<?php echo esc_attr( $ccca_profile['contact_2_mobile'] ); ?>" class="regular-text" /><br />
-    			</td>
-        </tr>
-
-        <tr>
-          <th><label for="company_type"><?php _e( 'Company Type', 'max-user' ); ?></label></th>
-          <th><label for="pic_email"><?php _e( 'Person in Charge Email', 'max-user' ); ?></label></th>
-          <th><label for="contact_2_email"><?php _e( 'Second Contact Email', 'max-user' ); ?></label></th>
-        </tr>
-        <tr>
-          <td>
-        		<select name="company_type" id="company_type">
-              <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'sel' ) {echo 'selected="selected"';} ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
-              <option value="cce" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'cce' ) {echo 'selected="selected"';} ?>><?php _e( 'Chinese Central Enterprise', 'max-user' ); ?></option>
-              <option value="csoe" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'csoe' ) {echo 'selected="selected"';} ?>><?php _e( 'Chinese State-Owned Enterprise', 'max-user' ); ?></option>
-              <option value="cpe" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'cpe' ) {echo 'selected="selected"';} ?>><?php _e( 'Chinese Private Enterprise', 'max-user' ); ?></option>
-              <option value="pts" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'pts' ) {echo 'selected="selected"';} ?>><?php _e( 'Partnership', 'max-user' ); ?></option>
-              <option value="alcc" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'alcc' ) {echo 'selected="selected"';} ?>><?php _e( 'Australian Local Chinese Company', 'max-user' ); ?></option>
-              <option value="alc" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'alc' ) {echo 'selected="selected"';} ?>><?php _e( 'Australian Local Company', 'max-user' ); ?></option>
-              <option value="oth" data-installed="1" <?php if ( $ccca_profile['company_type'] == 'oth' ) {echo 'selected="selected"';} ?>><?php _e( 'Other(Fill Details in Comment)', 'max-user' ); ?></option>
-            </select>
-          </td>
-          <td>
-    				<input type="text" name="pic_email" id="pic_email" value="<?php echo esc_attr( $ccca_profile['pic_email'] ); ?>" class="regular-text" /><br />
-    			</td>
-          <td>
-    				<input type="text" name="contact_2_email" id="contact_2_email" value="<?php echo esc_attr( $ccca_profile['contact_2_email'] ); ?>" class="regular-text" /><br />
-    			</td>
-        </tr>
-
-        <tr>
-          <th><label for="company_branch"><?php _e( 'Company Branch', 'max-user' ); ?></label></th>
-          <th><label for="comment"><?php _e( 'Comment', 'max-user' ); ?></label></th>
-        </tr>
-        <tr>
-          <td>
-            <select name="company_branch" id="company_branch">
-              <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'sel' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
-              <option value="Sydney" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Sydney' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user' ); ?></option>
-              <option value="Melbourne" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Melbourne' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user' ); ?></option>
-              <option value="Perth" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Perth' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user' ); ?></option>
-              <option value="Brisbane" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Brisbane' ) echo 'selected="selected"'; ?>><?php _e( 'Brisbane Branch', 'max-user' ); ?></option>
-              <option value="Adelaide" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Adelaide' ) echo 'selected="selected"'; ?>><?php _e( 'Adelaide Branch', 'max-user' ); ?></option>
-            </select>
-          </td>
-          <td>
-    				<input type="text" name="comment" id="comment" value="<?php echo esc_attr( $ccca_profile['comment'] ); ?>" class="regular-text" /><br />
-    			</td>
-        </tr>
-
-    	</table>
-    <?php }
-
-    public function my_save_extra_profile_fields( $user_id ) {
-      $ccca_meta_profile = array(
-          'company_name'      => $_POST['company_name'],
-          'company_address'   => $_POST['company_address'],
-          'company_phone'     => $_POST['company_phone'],
-          'company_website'   => $_POST['company_website'],
-          'company_type'      => $_POST['company_type'],
-          'company_industry'  => $_POST['company_industry'],
-          'company_branch'    => $_POST['company_branch'],
-          'pic_fname'         => $_POST['pic_fname'],
-          'pic_lname'         => $_POST['pic_lname'],
-          'pic_title'         => $_POST['pic_title'],
-          'pic_mobile'        => $_POST['pic_mobile'],
-          'pic_phone'         => $_POST['pic_phone'],
-          'pic_email'         => $_POST['pic_email'],
-          'contact_1_name'    => $_POST['contact_1_name'],
-          'contact_1_mobile'  => $_POST['contact_1_mobile'],
-          'contact_1_email'   => $_POST['contact_1_email'],
-          'contact_2_name'    => $_POST['contact_2_name'],
-          'contact_2_mobile'  => $_POST['contact_2_mobile'],
-          'contact_2_email'   => $_POST['contact_2_email'],
-          'comment'           => $_POST['comment'],
-      );
-
-    	if ( !current_user_can( 'edit_user', $user_id ) )
-    		return false;
-
-    	/* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
-    	update_usermeta( $user_id, 'ccca_profile', $ccca_meta_profile );
     }
 
     public function my_author_box() { ?>

@@ -140,6 +140,7 @@ msgid "Email"
 msgstr "Email"
 
 #: 
+#, fuzzy
 msgid "You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered."
 msgstr "You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered."
 
@@ -298,4 +299,29 @@ msgstr "Comment"
 #: 
 msgid "Please Select"
 msgstr "Please Select"
+
+#: 
+msgid "Forgot your password?"
+msgstr "Forgot your password?"
+
+#: 
+#, fuzzy
+msgid "Enter your email address and we'll send you a link you can use to pick a new password."
+msgstr "Enter your email address and we\\'ll send you a link you can use to pick a new password."
+
+#: 
+msgid "Company Name Chinese"
+msgstr "Company Name (Chinese)"
+
+#: 
+msgid "Company Name English"
+msgstr "Company Name (English)"
+
+#: 
+msgid "Company Email"
+msgstr "Company Email"
+
+#: 
+msgid "Contact Email"
+msgstr "Contact Email"
 
