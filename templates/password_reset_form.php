@@ -28,7 +28,7 @@
 
         <p class="resetpass-submit">
             <input type="submit" name="submit" id="resetpass-button"
-                   class="button" value="<?php _e( 'Reset Password', 'max-user' ); ?>" />
+                   class="button" value="<?php _e( 'Set New Password', 'max-user' ); ?>" />
         </p>
     </form>
 </div>

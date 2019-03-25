@@ -71,7 +71,7 @@ class Personalize_Login_Plugin {
                 'content' => '[custom-register-form]'
             ),
             'member-password-lost' => array(
-                'title' => __( 'Forgot Your Password?', 'max-user' ),
+                'title' => __( 'Password Reset', 'max-user' ),
                 'content' => '[custom-password-lost-form]'
             ),
             'member-password-reset' => array(
