@@ -4,7 +4,7 @@ get_currentuserinfo();
 
 // WP_User_Query arguments
 $args = array(
-	'role'           => 'adelaide_branch',
+	'role'           => 'brisbane_branch',
 //	'search'         => '@',
 //	'search_columns' => array( 'user_login' ),
 );
@@ -28,14 +28,14 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= 'CCCA team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
 
-//        $mail_sent = wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
-//        if ( $mail_sent ) { echo $user->user_login; }
+        $mail_sent = wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
+        if ( $mail_sent ) { echo $user->user_login  . '</br>'; }
         $mail_sent = wp_mail( get_the_author_meta( 'second_email', $user->ID ), $subject, $message, $headers = '', $attachments = array() );
-        if ( $mail_sent ) { echo get_the_author_meta( 'second_email', $user->ID ); }
+        if ( $mail_sent ) { echo get_the_author_meta( 'second_email', $user->ID ) . '</br>'; }
         $mail_sent = wp_mail( get_the_author_meta( 'third_email', $user->ID ), $subject, $message, $headers = '', $attachments = array() );
-        if ( $mail_sent ) { echo get_the_author_meta( 'third_email', $user->ID ); }
+        if ( $mail_sent ) { echo get_the_author_meta( 'third_email', $user->ID ) . '</br>'; }
         $mail_sent = wp_mail( get_the_author_meta( 'forth_email', $user->ID ), $subject, $message, $headers = '', $attachments = array() );
-        if ( $mail_sent ) { echo get_the_author_meta( 'forth_email', $user->ID ); }
+        if ( $mail_sent ) { echo get_the_author_meta( 'forth_email', $user->ID ) . '</br>'; }
 	}
 } else {
 	echo 'No users found.';
