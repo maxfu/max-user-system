@@ -325,3 +325,11 @@ msgstr "公司邮件"
 msgid "Contact Email"
 msgstr "联系人邮件"
 
+#: 
+msgid "Edit Member Profile"
+msgstr "编辑会员资料"
+
+#: 
+msgid "Submit"
+msgstr "提交"
+

@@ -50,7 +50,7 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_branch"><?php _e( 'Company Branch', 'max-user' ); ?></label><br>
           <span><select name="company_branch" id="company_branch" class="form-control">
-            <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Please Select' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
+            <option value="sel" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'sel' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
             <option value="Sydney" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Sydney' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user' ); ?></option>
             <option value="Melbourne" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Melbourne' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user' ); ?></option>
             <option value="Perth" data-installed="1" <?php if ( $ccca_profile['company_branch'] == 'Perth' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user' ); ?></option>
@@ -140,4 +140,16 @@ $user_info = get_userdata($current_user->ID);
 </table>
 
 <p><a class="register-button btn btn-primary btn-form display-4" href="<?php echo esc_url( add_query_arg( 'para', 'edit', esc_url(get_permalink()) ) )?>">Edit Profile</a></p>
+
+<h3 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><?php _e( 'Author Archives for ', 'max-user' ); echo $current_user->user_login; ?></h3>
+
+<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+<?php $custom_loop = new WP_Query(array( 'post_type' => 'post', 'author' => $current_user->ID, 'posts_per_page' => $posts_per_page, 'paged' => $paged )); ?>
+<ul>
+<?php while ( $custom_loop->have_posts() ) : $custom_loop->the_post(); ?>
+  <li class="mbr-title pt-2 mbr-fonts-style display-7"><a href="<?php echo esc_url(get_permalink()); ?>"><?php the_title(); ?></a></li>
+<?php endwhile; ?>
+</ul>
+<?php if (function_exists("ccca_pagination")) { ccca_pagination($custom_loop->max_num_pages); } ?>
+<?php wp_reset_postdata(); ?>
 <?php } ?>

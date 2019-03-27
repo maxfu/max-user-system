@@ -325,3 +325,11 @@ msgstr "Company Email"
 msgid "Contact Email"
 msgstr "Contact Email"
 
+#: 
+msgid "Edit Member Profile"
+msgstr "Edit Member Profile"
+
+#: 
+msgid "Submit"
+msgstr "Submit"
+
