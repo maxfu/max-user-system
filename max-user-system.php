@@ -550,12 +550,13 @@ class Personalize_Login_Plugin {
      */
     public function replace_retrieve_password_message( $message, $key, $user_login, $user_data ) {
         // Create new message
-        $msg  = __( 'Hello!', 'max-user' ) . "\r\n\r\n";
-        $msg .= sprintf( __( 'You asked us to reset your password for your account using the email address %s.', 'max-user' ), $user_login ) . "\r\n\r\n";
-        $msg .= __( "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen.", 'max-user' ) . "\r\n\r\n";
-        $msg .= __( 'To reset your password, visit the following address:', 'max-user' ) . "\r\n\r\n";
+        $msg  = __( 'Dear member,', 'max-user' ) . "\r\n\r\n";
+        $msg .= sprintf( __( 'You have requested to reset your password for your account %s.', 'max-user' ), $user_login ) . "\r\n\r\n";
+        $msg .= __( "If the request is not from you, please ignore this email.", 'max-user' ) . "\r\n\r\n";
+        $msg .= __( 'To reset your password, please click on the following link and follow the process to select your password:', 'max-user' ) . "\r\n\r\n";
         $msg .= site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . "\r\n\r\n";
-        $msg .= __( 'Thanks!', 'max-user' ) . "\r\n";
+        $msg .= __( 'Thanks for your support.', 'max-user' ) . "\r\n\r\n";
+        $msg .= __( 'Thanks for your support.', 'max-user' ) . "\r\n";
 
         return $msg;
     }

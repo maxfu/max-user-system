@@ -21,7 +21,7 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= '' . "\r\n\r\n";
         $message .= 'Your member account has been created with email address ' . $user->user_login . ' as the login user name.' . "\r\n\r\n";
         $message .= 'Please click on the following link and follow the process to select your password.' . "\r\n\r\n";
-        $message .= site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user->user_login ), 'login' ) . "\r\n\r\n";
+        $message .= 'https://www.cccaau.org/en/member-password-reset/' . "\r\n\r\n";
         $message .= '' . "\r\n\r\n";
         $message .= 'Thanks for your support.' . "\r\n\r\n";
         $message .= '' . "\r\n\r\n";
