@@ -357,3 +357,7 @@ msgstr "Thanks for your support."
 msgid "CCCA team"
 msgstr "CCCA Team"
 
+#: 
+msgid "CCCA member account Password Reset"
+msgstr "CCCA member account Password Reset"
+
