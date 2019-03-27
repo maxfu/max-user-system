@@ -40,7 +40,7 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
           <span><input type="text" name="company_name_en" id="company_name_en" class="form-control" value="<?php echo $user_info->first_name; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_email"><?php _e( 'Company Email', 'max-user' ); ?></label><br>
-          <span><input type="email" name="company_email" id="company_email" class="form-control" value="<?php echo get_the_author_meta( 'company_email', $current_user->ID ); ?>"></span><br>
+          <span><input type="email" name="company_email" id="company_email" class="form-control" value="<?php echo $user_info->user_email; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_address"><?php _e( 'Company Address', 'max-user' ); ?></label><br>
           <span><input type="text" name="company_address" id="company_address" class="form-control" value="<?php echo get_the_author_meta( 'company_address', $current_user->ID ); ?>"></span><br>
@@ -75,7 +75,7 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
           <span><input type="email" name="contact_email" id="contact_email" class="form-control" value="<?php echo get_the_author_meta( 'contact_email', $current_user->ID ); ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="comment"><?php _e( 'Comment', 'max-user' ); ?></label><br>
-          <span><textarea name="comment" id="comment" rows="3" class="area form-control" value="<?php echo get_the_author_meta( 'comment', $current_user->ID ); ?>"></textarea></span>
+          <span><textarea name="comment" id="comment" rows="3" class="area form-control" value="<?php echo $user_info->description; ?>"></textarea></span>
         </div>
       </div>
     </div>
@@ -96,6 +96,7 @@ if ( $my_para == 'save' ) {
     'user_url'   => $_POST['company_website'],
     'user_email' => sanitize_email( $_POST['company_email'] ),
     'role'       => $_POST['company_branch'],
+    'description' => sanitize_textarea_field($_POST['comment']),
   );
 
   /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
@@ -106,11 +107,11 @@ if ( $my_para == 'save' ) {
 //  update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
   update_usermeta( $current_user->ID, 'contact_name', sanitize_text_field($_POST['contact_name']) );
   update_usermeta( $current_user->ID, 'contact_email', sanitize_email($_POST['contact_email']) );
-  update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
+//  update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
 }
 $user_info = get_userdata($current_user->ID);
 ?>
-<h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user' ); ?></h2>
+<h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user' ); ?> <?php echo esc_attr( $user_info->user_login ); ?></h2>
 
 <table class="form-table table isSearch" id="ccca-member-profile">
   <tbody>
@@ -136,7 +137,7 @@ $user_info = get_userdata($current_user->ID);
 
   <tr>
     <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php echo implode(', ', $user_info->roles); ?></td>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'comment', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo esc_attr( $user_info->description ); ?></td>
   </tr>
   <tbody>
 </table>
