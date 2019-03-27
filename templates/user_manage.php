@@ -15,7 +15,7 @@ $user_query = new WP_User_Query( $args );
 // User Loop
 if ( ! empty( $user_query->get_results() ) ) {
 	foreach ( $user_query->get_results() as $user ) {
-		echo '<p>' . $user->display_name . '</p>';
+		echo '<p>' . $user->user_login . '</p>';
 		echo '<p>' . $user->ID . '</p>';
 	}
 } else {
