@@ -5,8 +5,8 @@ get_currentuserinfo();
 // WP_User_Query arguments
 $args = array(
 	'role'           => 'test_branch',
-	'search'         => '@',
-	'search_columns' => array( 'user_login' ),
+//	'search'         => '@',
+//	'search_columns' => array( 'user_login' ),
 );
 
 // The User Query
