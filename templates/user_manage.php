@@ -15,13 +15,18 @@ $user_query = new WP_User_Query( $args );
 // User Loop
 if ( ! empty( $user_query->get_results() ) ) {
 	foreach ( $user_query->get_results() as $user ) {
-        $message  = __( 'Hello!', 'max-user' ) . $user->display_name . "\r\n\r\n";
-        $message .= sprintf( __( 'You asked us to reset your password for your account using the email address %s.', 'max-user' ), $user->user_login) . "\r\n\r\n";
-        $message .= __( "If this was a mistake, or you didn't ask for a password reset, just ignore this email and nothing will happen.", 'max-user' ) . "\r\n\r\n";
-        $message .= __( 'To reset your password, visit the following address:', 'max-user' ) . "\r\n\r\n";
+        $message  = 'Dear member,' . "\r\n\r\n";
+        $message  = '' . "\r\n\r\n";
+        $message .= 'Welcome to the new official website of China Chamber of Commerce in Australia!' . "\r\n\r\n";
+        $message  = '' . "\r\n\r\n";
+        $message .= 'Your member account has been created with email address ' . $user->user_login . ' as the login user name.' . "\r\n\r\n";
+        $message .= 'Please click on the following link and follow the process to select your password.' . "\r\n\r\n";
         $message .= site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user->user_login ), 'login' ) . "\r\n\r\n";
-        $message .= __( 'Thanks!', 'max-user' ) . "\r\n";
-        $subject = 'Password Reset';
+        $message  = '' . "\r\n\r\n";
+        $message .= 'Thanks for your support.' . "\r\n\r\n";
+        $message  = '' . "\r\n\r\n";
+        $message .= 'CCCA team' . "\r\n";
+        $subject = 'Your CCCA member account is ready.';
         echo $message;
         wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
 		echo '<p>' . $user->ID . '</p>';
