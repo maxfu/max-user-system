@@ -25,6 +25,7 @@ class Personalize_Login_Plugin {
         add_shortcode( 'custom-password-lost-form', array( $this, 'render_password_lost_form' ) );
         add_shortcode( 'custom-password-reset-form', array( $this, 'render_password_reset_form' ) );
         add_shortcode( 'account-info', array( $this, 'render_account_info' ) );
+        add_shortcode( 'user-manage', array( $this, 'render_user_manage' ) );
         add_action( 'login_form_login', array( $this, 'redirect_to_custom_login' ) );
         add_filter( 'authenticate', array( $this, 'maybe_redirect_at_authenticate' ), 101, 3 );
         add_action( 'wp_logout', array( $this, 'redirect_after_logout' ) );
@@ -288,6 +289,37 @@ class Personalize_Login_Plugin {
             $attributes['errors'] = $errors;
 
             return $this->get_template_html( 'account_info', $attributes );
+        } else {
+            return __( 'You are not signed in yet.', 'max-user' );
+        }
+    }
+
+    /**
+     * A shortcode for rendering the form used to reset a user's password.
+     *
+     * @param  array   $attributes  Shortcode attributes.
+     * @param  string  $content     The text content for shortcode. Not used.
+     *
+     * @return string  The shortcode output
+     */
+    public function render_user_manage( $attributes, $content = null ) {
+        // Parse shortcode attributes
+        $default_attributes = array( 'show_title' => false );
+        $attributes = shortcode_atts( $default_attributes, $attributes );
+
+        if ( is_user_logged_in() ) {
+            // Error messages
+            $errors = array();
+            if ( isset( $_REQUEST['error'] ) ) {
+                $error_codes = explode( ',', $_REQUEST['error'] );
+
+                foreach ( $error_codes as $code ) {
+                    $errors []= $this->get_error_message( $code );
+                }
+            }
+            $attributes['errors'] = $errors;
+
+            return $this->get_template_html( 'user_manage', $attributes );
         } else {
             return __( 'You are not signed in yet.', 'max-user' );
         }
