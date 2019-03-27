@@ -140,3 +140,5 @@ $user_info = get_userdata($current_user->ID);
 </table>
 
 <p><a class="register-button btn btn-primary btn-form display-4" href="<?php echo esc_url( add_query_arg( 'para', 'edit', esc_url(get_permalink()) ) )?>">Edit Profile</a></p>
+
+<?php } ?>
