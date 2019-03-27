@@ -552,13 +552,13 @@ class Personalize_Login_Plugin {
         // Create new message
         $msg  = __( 'Dear member,', 'max-user' ) . "\r\n\r\n";
         $msg .= '' . "\r\n\r\n";
-        $msg .= sprintf( __( 'You have requested to reset your password for your account %s.', 'max-user' ), $user_login ) . "\r\n\r\n";
+        $msg .= sprintf( __( 'You have requested to reset password for account %s.', 'max-user' ), $user_login ) . "\r\n\r\n";
         $msg .= __( "If the request is not from you, please ignore this email.", 'max-user' ) . "\r\n\r\n";
         $msg .= __( 'To reset your password, please click on the following link and follow the process to select your password:', 'max-user' ) . "\r\n\r\n";
         $msg .= site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . "\r\n\r\n";
         $msg .= '' . "\r\n\r\n";
         $msg .= __( 'Thanks for your support.', 'max-user' ) . "\r\n\r\n";
-        $msg .= __( 'CCCA team ', 'max-user' ) . "\r\n";
+        $msg .= __( 'CCCA team', 'max-user' ) . "\r\n";
 
         return $msg;
     }
