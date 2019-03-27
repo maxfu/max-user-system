@@ -333,3 +333,27 @@ msgstr "编辑会员资料"
 msgid "Submit"
 msgstr "提交"
 
+#: 
+msgid "Dear member,"
+msgstr "尊敬的会员："
+
+#: 
+msgid "You have requested to reset password for account %s."
+msgstr "我们已收到您的账户%s的密码重置需求。"
+
+#: 
+msgid "If the request is not from you, please ignore this email."
+msgstr "如不是您本人操作，请忽略此邮件。"
+
+#: 
+msgid "To reset your password, please click on the following link and follow the process to select your password:"
+msgstr "要重置密码，请访问以下地址："
+
+#: 
+msgid "Thanks for your support."
+msgstr "感谢您的支持。"
+
+#: 
+msgid "CCCA team"
+msgstr "总商会办公室"
+

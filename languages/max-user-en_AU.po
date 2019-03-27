@@ -206,7 +206,7 @@ msgstr "Company Type"
 
 #: 
 msgid "Company Branch"
-msgstr "Company Branch"
+msgstr "Branch"
 
 #: 
 msgid "Company Industry"
@@ -332,4 +332,28 @@ msgstr "Edit Member Profile"
 #: 
 msgid "Submit"
 msgstr "Submit"
+
+#: 
+msgid "Dear member,"
+msgstr "Dear member,"
+
+#: 
+msgid "You have requested to reset password for account %s."
+msgstr "You have requested to reset password for account %s."
+
+#: 
+msgid "If the request is not from you, please ignore this email."
+msgstr "If the request is not from you, please ignore this email."
+
+#: 
+msgid "To reset your password, please click on the following link and follow the process to select your password:"
+msgstr "To reset your password, please click on the following link and follow the process to select your password:"
+
+#: 
+msgid "Thanks for your support."
+msgstr "Thanks for your support."
+
+#: 
+msgid "CCCA team"
+msgstr "CCCA Team"
 
