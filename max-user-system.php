@@ -478,7 +478,7 @@ class Personalize_Login_Plugin {
                 exit;
             }
 
-            wp_redirect( home_url( 'member-password-lost' ) );
+            wp_redirect( home_url( 'member-password-reset' ) );
             exit;
         }
     }
@@ -491,7 +491,7 @@ class Personalize_Login_Plugin {
             $errors = retrieve_password();
             if ( is_wp_error( $errors ) ) {
                 // Errors found
-                $redirect_url = home_url( 'member-password-lost' );
+                $redirect_url = home_url( 'member-password-reset' );
                 $redirect_url = add_query_arg( 'errors', join( ',', $errors->get_error_codes() ), $redirect_url );
             } else {
                 // Email sent
@@ -544,7 +544,7 @@ class Personalize_Login_Plugin {
                 exit;
             }
 
-            $redirect_url = home_url( 'member-password-reset' );
+            $redirect_url = home_url( 'pick-new-password' );
             $redirect_url = add_query_arg( 'login', esc_attr( $_REQUEST['login'] ), $redirect_url );
             $redirect_url = add_query_arg( 'key', esc_attr( $_REQUEST['key'] ), $redirect_url );
 
@@ -575,7 +575,7 @@ class Personalize_Login_Plugin {
             if ( isset( $_POST['pass1'] ) ) {
                 if ( $_POST['pass1'] != $_POST['pass2'] ) {
                     // Passwords don't match
-                    $redirect_url = home_url( 'member-password-reset' );
+                    $redirect_url = home_url( 'pick-new-password' );
 
                     $redirect_url = add_query_arg( 'key', $rp_key, $redirect_url );
                     $redirect_url = add_query_arg( 'login', $rp_login, $redirect_url );
@@ -587,7 +587,7 @@ class Personalize_Login_Plugin {
 
                 if ( empty( $_POST['pass1'] ) ) {
                     // Password is empty
-                    $redirect_url = home_url( 'member-password-reset' );
+                    $redirect_url = home_url( 'pick-new-password' );
 
                     $redirect_url = add_query_arg( 'key', $rp_key, $redirect_url );
                     $redirect_url = add_query_arg( 'login', $rp_login, $redirect_url );
