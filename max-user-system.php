@@ -46,6 +46,7 @@ class Personalize_Login_Plugin {
         add_role( 'perth_branch', __( 'Perth Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'brisbane_branch', __( 'Brisbane Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'adelaide_branch', __( 'Adelaide Branch', 'max-user' ), array( 'read' => true, ) );
+        add_role( 'test_branch', __( 'Test Branch', 'max-user' ), array( 'read' => true, ) );
     }
 
     public function mus_add_custom_query_var( $vars ){
