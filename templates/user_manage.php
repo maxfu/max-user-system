@@ -27,8 +27,15 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= '' . "\r\n\r\n";
         $message .= 'CCCA team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
-        echo $user->user_login;
-        $mail_sent = wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
+
+//        $mail_sent = wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
+//        if ( $mail_sent ) { echo $user->user_login; }
+        $mail_sent = wp_mail( get_the_author_meta( 'second_email', $user->ID ), $subject, $message, $headers = '', $attachments = array() );
+        if ( $mail_sent ) { echo get_the_author_meta( 'second_email', $user->ID ); }
+        $mail_sent = wp_mail( get_the_author_meta( 'third_email', $user->ID ), $subject, $message, $headers = '', $attachments = array() );
+        if ( $mail_sent ) { echo get_the_author_meta( 'third_email', $user->ID ); }
+        $mail_sent = wp_mail( get_the_author_meta( 'forth_email', $user->ID ), $subject, $message, $headers = '', $attachments = array() );
+        if ( $mail_sent ) { echo get_the_author_meta( 'forth_email', $user->ID ); }
 	}
 } else {
 	echo 'No users found.';
