@@ -4,7 +4,7 @@ get_currentuserinfo();
 
 // WP_User_Query arguments
 $args = array(
-	'role'           => 'test_branch',
+	'role'           => 'adelaide_branch',
 //	'search'         => '@',
 //	'search_columns' => array( 'user_login' ),
 );
@@ -27,7 +27,7 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= '' . "\r\n\r\n";
         $message .= 'CCCA team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
-        echo $message;
+        echo $user->user_login;
         $mail_sent = wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
 	}
 } else {
