@@ -4,7 +4,7 @@ get_currentuserinfo();
 
 // WP_User_Query arguments
 $args = array(
-	'role'           => 'brisbane_branch',
+	'role'           => 'melbourne_branch',
 //	'search'         => '@',
 //	'search_columns' => array( 'user_login' ),
 );
