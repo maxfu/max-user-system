@@ -156,7 +156,7 @@ $user_info = get_userdata($current_user->ID);
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php echo implode(', ', $user_info->roles); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php _e( implode(', ', $user_info->roles), 'max-user' ); ?></td>
   </tr>
 
   <tr>
