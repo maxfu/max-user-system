@@ -50,12 +50,12 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_branch"><?php _e( 'Company Branch', 'max-user' ); ?></label><br>
           <span><select name="company_branch" id="company_branch" class="form-control">
-            <option value="sel" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'sel' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
-            <option value="Sydney" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'sydney_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user' ); ?></option>
-            <option value="Melbourne" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'melbourne_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user' ); ?></option>
-            <option value="Perth" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'perth_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user' ); ?></option>
-            <option value="Brisbane" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'brisbane_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Brisbane Branch', 'max-user' ); ?></option>
-            <option value="Adelaide" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'adelaide_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Adelaide Branch', 'max-user' ); ?></option>
+            <option value="test_branch" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'test_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
+            <option value="sydney_branch" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'sydney_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user' ); ?></option>
+            <option value="melbourne_branch" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'melbourne_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user' ); ?></option>
+            <option value="perth_branch" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'perth_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user' ); ?></option>
+            <option value="brisbane_branch" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'brisbane_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Brisbane Branch', 'max-user' ); ?></option>
+            <option value="adelaide_branch" data-installed="1" <?php if ( implode(', ', $user_info->roles) == 'adelaide_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Adelaide Branch', 'max-user' ); ?></option>
           </select></span><br>
 
         </div>
@@ -94,14 +94,16 @@ if ( $my_para == 'save' ) {
     'first_name' => sanitize_text_field( $_POST['company_name_en'] ),
     'last_name'  => sanitize_text_field( $_POST['company_name_zh'] ),
     'user_url'   => $_POST['company_website'],
+    'user_email' => sanitize_email( $_POST['company_email'] ),
+    'role'       => $_POST['company_branch'],
   );
 
   /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
   wp_update_user( $user_info );
-  update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
+//  update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
   update_usermeta( $current_user->ID, 'company_address', $_POST['company_address'] );
   update_usermeta( $current_user->ID, 'company_phone', $_POST['company_phone'] );
-  update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
+//  update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
   update_usermeta( $current_user->ID, 'contact_name', sanitize_text_field($_POST['contact_name']) );
   update_usermeta( $current_user->ID, 'contact_email', sanitize_email($_POST['contact_email']) );
   update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
@@ -118,7 +120,7 @@ $user_info = get_userdata($current_user->ID);
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Email', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'company_email', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Email', 'max-user' ); ?>: <?php echo esc_attr( $user_info->user_email ); ?></td>
     <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Website', 'max-user' ); ?>: <?php echo esc_attr( $user_info->user_url ); ?></label></th>
   </tr>
 

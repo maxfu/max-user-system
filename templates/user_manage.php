@@ -28,8 +28,8 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= 'CCCA team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
         echo $message;
-        wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
-		echo '<p>' . $user->ID . '</p>';
+        $mail_sent = wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
+		echo ;
 	}
 } else {
 	echo 'No users found.';
