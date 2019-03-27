@@ -50,12 +50,12 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_branch"><?php _e( 'Company Branch', 'max-user' ); ?></label><br>
           <span><select name="company_branch" id="company_branch" class="form-control">
-            <option value="sel" data-installed="1" <?php if ( $user_info->first_name == 'sel' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
-            <option value="Sydney" data-installed="1" <?php if ( $user_info->first_name == 'sydney_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user' ); ?></option>
-            <option value="Melbourne" data-installed="1" <?php if ($user_info->first_name == 'melbourne_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user' ); ?></option>
-            <option value="Perth" data-installed="1" <?php if ( $user_info->first_name == 'perth_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user' ); ?></option>
-            <option value="Brisbane" data-installed="1" <?php if ( $user_info->first_name == 'brisbane_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Brisbane Branch', 'max-user' ); ?></option>
-            <option value="Adelaide" data-installed="1" <?php if ( $user_info->first_name == 'adelaide_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Adelaide Branch', 'max-user' ); ?></option>
+            <option value="sel" data-installed="1" <?php if ( $user_info->role == 'sel' ) echo 'selected="selected"'; ?>><?php _e( 'Please Select', 'max-user' ); ?></option>
+            <option value="Sydney" data-installed="1" <?php if ( $user_info->role == 'sydney_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Sydney Branch', 'max-user' ); ?></option>
+            <option value="Melbourne" data-installed="1" <?php if ($user_info->role == 'melbourne_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Melbourne Branch', 'max-user' ); ?></option>
+            <option value="Perth" data-installed="1" <?php if ( $user_info->role == 'perth_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Perth Branch', 'max-user' ); ?></option>
+            <option value="Brisbane" data-installed="1" <?php if ( $user_info->role == 'brisbane_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Brisbane Branch', 'max-user' ); ?></option>
+            <option value="Adelaide" data-installed="1" <?php if ( $user_info->role == 'adelaide_branch' ) echo 'selected="selected"'; ?>><?php _e( 'Adelaide Branch', 'max-user' ); ?></option>
           </select></span><br>
 
         </div>
@@ -133,7 +133,7 @@ $user_info = get_userdata($current_user->ID);
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'company_branch', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php echo esc_attr( $user_info->role ); ?></td>
     <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'comment', $current_user->ID ) ); ?></td>
   </tr>
   <tbody>
