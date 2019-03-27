@@ -564,7 +564,7 @@ class Personalize_Login_Plugin {
     }
 
     public function replace_retrieve_password_title( $title ){
-        $title = __( 'CCCA member account Password Reset' );
+        $title = __( 'CCCA member account Password Reset', 'max-user' );
         return $title;
     }
 
