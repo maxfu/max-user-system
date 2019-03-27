@@ -66,7 +66,7 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
           <span><input type="text" name="company_name_zh" id="company_name_zh" class="form-control" value="<?php echo $user_info->last_name; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_website"><?php _e( 'Company Website', 'max-user' ); ?></label><br>
-          <span><input type="url" name="company_website" id="company_website" class="form-control" value="<?php echo $user_info->user_url; ?>"></span><br>
+          <span><input type="text" name="company_website" id="company_website" class="form-control" value="<?php echo $user_info->user_url; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_phone"><?php _e( 'Company Telephone', 'max-user' ); ?></label><br>
           <span><input type="tel" name="company_phone" id="company_phone" class="form-control" value="<?php echo get_the_author_meta( 'company_phone', $current_user->ID ); ?>"></span><br>
