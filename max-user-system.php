@@ -39,6 +39,12 @@ class Personalize_Login_Plugin {
         add_action( 'login_form_resetpass', array( $this, 'redirect_to_custom_password_reset' ) );
         add_action( 'login_form_rp', array( $this, 'do_password_reset' ) );
         add_action( 'login_form_resetpass', array( $this, 'do_password_reset' ) );
+
+        add_role( 'sydney_branch', __( 'Sydney Branch', 'max-user' ), array( 'read' => true, ) );
+        add_role( 'melbourne_branch', __( 'Melbourne Branch', 'max-user' ), array( 'read' => true, ) );
+        add_role( 'perth_branch', __( 'Perth Branch', 'max-user' ), array( 'read' => true, ) );
+        add_role( 'brisbane_branch', __( 'Brisbane Branch', 'max-user' ), array( 'read' => true, ) );
+        add_role( 'adelaide_branch', __( 'Adelaide Branch', 'max-user' ), array( 'read' => true, ) );
     }
 
     public function mus_add_custom_query_var( $vars ){
