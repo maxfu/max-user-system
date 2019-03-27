@@ -22,7 +22,6 @@
   </style>
 <?php
 $user_info = get_userdata($current_user->ID);
-$company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
 ?>
   <h2><?php _e('Edit Member Profile', 'max-user'); ?></h2>
 
@@ -44,7 +43,7 @@ $company_branch = get_the_author_meta( 'company_branch', $current_user->ID );
           <span><input type="text" name="company_name_zh" id="company_name_zh" class="form-control" value="<?php echo $user_info->last_name; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_email"><?php _e( 'Company Email', 'max-user' ); ?></label><br>
-          <span><input type="email" name="company_email" id="company_email" class="form-control" value="<?php echo $user_info->user_email; ?>"></span><br>
+          <span><input type="email" name="company_email" id="company_email" class="form-control" value="<?php echo get_the_author_meta( 'company_email', $current_user->ID ); ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_address"><?php _e( 'Company Address', 'max-user' ); ?></label><br>
           <span><input type="text" name="company_address" id="company_address" class="form-control" value="<?php echo get_the_author_meta( 'company_address', $current_user->ID ); ?>"></span><br>
@@ -102,7 +101,7 @@ if ( $my_para == 'save' ) {
 
   /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
   wp_update_user( $user_info );
-//  update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
+  update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
   update_usermeta( $current_user->ID, 'company_address', $_POST['company_address'] );
   update_usermeta( $current_user->ID, 'company_phone', $_POST['company_phone'] );
 //  update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
@@ -126,7 +125,7 @@ $user_info = get_userdata($current_user->ID);
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Email', 'max-user' ); ?>: <?php echo esc_attr( $user_info->user_email ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Email', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'company_email', $current_user->ID ) ); ?></td>
   </tr>
 
   <tr>
