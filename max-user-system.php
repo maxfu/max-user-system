@@ -76,11 +76,11 @@ class Personalize_Login_Plugin {
                 'title' => __( 'Register', 'max-user' ),
                 'content' => '[custom-register-form]'
             ),
-            'member-password-lost' => array(
-                'title' => __( 'Forgot Your Password?', 'max-user' ),
+            'member-password-reset' => array(
+                'title' => __( 'Reset Password', 'max-user' ),
                 'content' => '[custom-password-lost-form]'
             ),
-            'member-password-reset' => array(
+            'pick-new-password' => array(
                 'title' => __( 'Pick a New Password', 'max-user' ),
                 'content' => '[custom-password-reset-form]'
             ),
