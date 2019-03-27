@@ -133,7 +133,7 @@ $user_info = get_userdata($current_user->ID);
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php echo esc_attr( $user_info->role ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Branch', 'max-user' ); ?>: <?php echo implode(', ', $user_info->roles); ?></td>
     <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'comment', $current_user->ID ) ); ?></td>
   </tr>
   <tbody>
