@@ -40,7 +40,7 @@ class Personalize_Login_Plugin {
         add_action( 'login_form_resetpass', array( $this, 'redirect_to_custom_password_reset' ) );
         add_action( 'login_form_rp', array( $this, 'do_password_reset' ) );
         add_action( 'login_form_resetpass', array( $this, 'do_password_reset' ) );
-
+        add_filter( 'retrieve_password_title', array( $this, 'replace_retrieve_password_title' ) );
         add_role( 'sydney_branch', __( 'Sydney Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'melbourne_branch', __( 'Melbourne Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'perth_branch', __( 'Perth Branch', 'max-user' ), array( 'read' => true, ) );
@@ -559,6 +559,11 @@ class Personalize_Login_Plugin {
         $msg .= __( 'Thanks for your support.', 'max-user' ) . "\r\n";
 
         return $msg;
+    }
+
+    public function replace_retrieve_password_title( $title ){
+        $title = __( 'CCCA member account Password Reset' );
+        return $title;
     }
 
     /**
