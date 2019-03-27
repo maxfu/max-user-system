@@ -21,9 +21,9 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= __( 'To reset your password, visit the following address:', 'max-user' ) . "\r\n\r\n";
         $message .= site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user->user_login ), 'login' ) . "\r\n\r\n";
         $message .= __( 'Thanks!', 'max-user' ) . "\r\n";
-        $subject = 'Password Reset'
+        $subject = 'Password Reset';
         echo $message;
-        wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() )
+        wp_mail( $user->user_login, $subject, $message, $headers = '', $attachments = array() );
 		echo '<p>' . $user->ID . '</p>';
 	}
 } else {
