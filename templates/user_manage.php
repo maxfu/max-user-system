@@ -25,7 +25,7 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= '' . "\r\n\r\n";
         $message .= 'Thanks for your support.' . "\r\n\r\n";
         $message .= '' . "\r\n\r\n";
-        $message .= 'CCCA team' . "\r\n";
+        $message .= 'CCCA Team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
         $headers[] = 'From: Notification <notification@dm.cccaau.org>';
 
