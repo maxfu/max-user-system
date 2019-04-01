@@ -27,7 +27,7 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= '' . "\r\n\r\n";
         $message .= 'CCCA team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
-        $headers[] = 'From: Test Notification <notification@dm.cccaau.org>';
+        $headers[] = 'From: Notification <notification@dm.cccaau.org>';
 
         $first_email = $user->user_login;
         $second_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
