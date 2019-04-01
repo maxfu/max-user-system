@@ -27,15 +27,20 @@ if ( ! empty( $user_query->get_results() ) ) {
         $message .= '' . "\r\n\r\n";
         $message .= 'CCCA team' . "\r\n";
         $subject = 'Your CCCA member account is ready.';
+        $headers[] = 'From: Test Notification <notification@dm.cccaau.org>';
 
         $first_email = $user->user_login;
         $second_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
         $third_email = esc_attr( get_the_author_meta( 'third_email', $user->ID ) );
         $forth_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
-        wp_mail( $first_email, $subject, $message );
-        wp_mail( $second_email, $subject, $message );
-        wp_mail( $third_email, $subject, $message );
-        wp_mail( $forth_email, $subject, $message );
+        wp_mail( $first_email, $subject, $message, $headers );
+        echo $first_email;
+        wp_mail( $second_email, $subject, $message, $headers );
+        echo $second_email;
+        wp_mail( $third_email, $subject, $message, $headers );
+        echo $third_email;
+        wp_mail( $forth_email, $subject, $message, $headers );
+        echo $forth_email;
 	}
 } else {
 	echo 'No users found.';
