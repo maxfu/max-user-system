@@ -802,20 +802,22 @@ class Personalize_Login_Plugin {
     	</div><?php
     }
 
-              
-function mus_user_contactmethods($user_contactmethods){
-    unset($user_contactmethods['yim']);
-    unset($user_contactmethods['aim']);
-    unset($user_contactmethods['jabber']);
 
-  $user_contactmethods['company_email'] = 'Company Email';
-  $user_contactmethods['company_address'] = 'Company Address';
-  $user_contactmethods['company_phone'] = 'Company Phone';
-  $user_contactmethods['second_email'] = 'Second Email';
-  $user_contactmethods['third_email'] = 'Third Email';
-  $user_contactmethods['forth_email'] = 'Fourth Email';
- 
-  return $user_contactmethods;
+// Register User Contact Methods
+function mus_user_contactmethods( $user_contact_method ) {
+
+    unset($user_contact_method['yim']);
+    unset($user_contact_method['aim']);
+    unset($user_contact_method['jabber']);
+
+	$user_contact_method['company_email'] = __( 'Company Email', 'max-user' );
+	$user_contact_method['company_address'] = __( 'Company Address', 'max-user' );
+	$user_contact_method['company_phone'] = __( 'Company Phone', 'max-user' );
+	$user_contact_method['second_email'] = __( 'Second Email', 'max-user' );
+	$user_contact_method['third_email'] = __( 'Third Email', 'max-user' );
+	$user_contact_method['forth_email'] = __( 'Forth Email', 'max-user' );
+
+	return $user_contact_method;
 }
 
 }
