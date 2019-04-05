@@ -20,33 +20,37 @@ class Personalize_Login_Plugin {
     public function __construct() {
         // Localisation Support
         add_action( 'init', array( $this, 'max_user_load_textdomain' ) );
-        add_shortcode( 'custom-login-form', array( $this, 'render_login_form' ) );
-        add_shortcode( 'custom-register-form', array( $this, 'render_register_form' ) );
-        add_shortcode( 'custom-password-lost-form', array( $this, 'render_password_lost_form' ) );
-        add_shortcode( 'custom-password-reset-form', array( $this, 'render_password_reset_form' ) );
-        add_shortcode( 'account-info', array( $this, 'render_account_info' ) );
-        add_shortcode( 'user-manage', array( $this, 'render_user_manage' ) );
         add_action( 'login_form_login', array( $this, 'redirect_to_custom_login' ) );
-        add_filter( 'authenticate', array( $this, 'maybe_redirect_at_authenticate' ), 101, 3 );
         add_action( 'wp_logout', array( $this, 'redirect_after_logout' ) );
-        add_filter( 'query_vars', array( $this, 'mus_add_custom_query_var' ) );
-        add_filter( 'login_redirect', array( $this, 'redirect_after_login' ), 10, 3 );
         add_action( 'login_form_register', array( $this, 'redirect_to_custom_register' ) );
         add_action( 'login_form_register', array( $this, 'do_register_user' ) );
         add_action( 'login_form_lostpassword', array( $this, 'redirect_to_custom_lostpassword' ) );
         add_action( 'login_form_lostpassword', array( $this, 'do_password_lost' ) );
-        add_filter( 'retrieve_password_message', array( $this, 'replace_retrieve_password_message' ), 10, 4 );
         add_action( 'login_form_rp', array( $this, 'redirect_to_custom_password_reset' ) );
         add_action( 'login_form_resetpass', array( $this, 'redirect_to_custom_password_reset' ) );
         add_action( 'login_form_rp', array( $this, 'do_password_reset' ) );
         add_action( 'login_form_resetpass', array( $this, 'do_password_reset' ) );
+
+        add_filter( 'authenticate', array( $this, 'maybe_redirect_at_authenticate' ), 101, 3 );
+        add_filter( 'query_vars', array( $this, 'mus_add_custom_query_var' ) );
+        add_filter( 'login_redirect', array( $this, 'redirect_after_login' ), 10, 3 );
+        add_filter( 'retrieve_password_message', array( $this, 'replace_retrieve_password_message' ), 10, 4 );
         add_filter( 'retrieve_password_title', array( $this, 'replace_retrieve_password_title' ) );
+        add_filter( 'user_contactmethods', array( $this, 'mus_user_contactmethods' ));
+
         add_role( 'sydney_branch', __( 'Sydney Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'melbourne_branch', __( 'Melbourne Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'perth_branch', __( 'Perth Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'brisbane_branch', __( 'Brisbane Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'adelaide_branch', __( 'Adelaide Branch', 'max-user' ), array( 'read' => true, ) );
         add_role( 'test_branch', __( 'Test Branch', 'max-user' ), array( 'read' => true, ) );
+
+        add_shortcode( 'custom-login-form', array( $this, 'render_login_form' ) );
+        add_shortcode( 'custom-register-form', array( $this, 'render_register_form' ) );
+        add_shortcode( 'custom-password-lost-form', array( $this, 'render_password_lost_form' ) );
+        add_shortcode( 'custom-password-reset-form', array( $this, 'render_password_reset_form' ) );
+        add_shortcode( 'account-info', array( $this, 'render_account_info' ) );
+        add_shortcode( 'user-manage', array( $this, 'render_user_manage' ) );
     }
 
     public function mus_add_custom_query_var( $vars ){
@@ -797,6 +801,23 @@ class Personalize_Login_Plugin {
     		<?php } // End check for twitter ?>
     	</div><?php
     }
+
+              
+function mus_user_contactmethods($user_contactmethods){
+    unset($user_contactmethods['yim']);
+    unset($user_contactmethods['aim']);
+    unset($user_contactmethods['jabber']);
+
+  $user_contactmethods['company_email'] = 'Company Email';
+  $user_contactmethods['company_address'] = 'Company Address';
+  $user_contactmethods['company_phone'] = 'Company Phone';
+  $user_contactmethods['second_email'] = 'Second Email';
+  $user_contactmethods['third_email'] = 'Third Email';
+  $user_contactmethods['forth_email'] = 'Fourth Email';
+ 
+  return $user_contactmethods;
+}
+
 }
 
 // Initialize the plugin

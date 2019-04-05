@@ -39,14 +39,14 @@ if ( ! empty( $user_query->get_results() ) ) {
         $second_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
         $third_email = esc_attr( get_the_author_meta( 'third_email', $user->ID ) );
         $forth_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
-        wp_mail( $first_email, $subject, $message, $headers );
-        echo $first_email;
-        wp_mail( $second_email, $subject, $message, $headers );
-        echo $second_email;
-        wp_mail( $third_email, $subject, $message, $headers );
-        echo $third_email;
-        wp_mail( $forth_email, $subject, $message, $headers );
-        echo $forth_email;
+        // wp_mail( $first_email, $subject, $message, $headers );
+        // echo $first_email;
+        // wp_mail( $second_email, $subject, $message, $headers );
+        // echo $second_email;
+        // wp_mail( $third_email, $subject, $message, $headers );
+        // echo $third_email;
+        // wp_mail( $forth_email, $subject, $message, $headers );
+        // echo $forth_email;
 	}
 } else {
 	echo 'No users found.';
