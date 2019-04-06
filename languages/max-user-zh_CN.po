@@ -361,3 +361,23 @@ msgstr "总商会办公室"
 msgid "CCCA member account Password Reset"
 msgstr "澳大利亚中国总商会会员账户密码重置"
 
+#: 
+msgid "test_branch"
+msgstr "暂无"
+
+#: 
+msgid "Company Phone"
+msgstr "公司邮箱"
+
+#: 
+msgid "Second Email"
+msgstr "第二邮箱"
+
+#: 
+msgid "Third Email"
+msgstr "第三邮件"
+
+#: 
+msgid "Forth Email"
+msgstr "第四邮箱"
+
