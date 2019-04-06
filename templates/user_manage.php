@@ -2,11 +2,12 @@
 // WP_User_Query arguments
 $args = array(
 	'role__in'           => array(
-        'sydney_branch',
-        'melbourne_branch',
-        'perth_branch',
-        'brisbane_branch',
-        'adelaide_branch',
+        'test_branch',
+//        'sydney_branch',
+//        'melbourne_branch',
+//        'perth_branch',
+//        'brisbane_branch',
+//        'adelaide_branch',
     ),
 //	'search'         => '@',
 //	'search_columns' => array( 'user_login' ),
