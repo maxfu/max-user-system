@@ -2,7 +2,7 @@
 // WP_User_Query arguments
 $args = array(
 	'role'           => 'adelaide_branch',
-	'fields'         => array( 'ID', 'user_login', 'user_url', 'company_email', 'company_phone', 'company_address', 'second_email', 'third_email', 'forth_email' ),
+//	'fields'         => array( 'ID', 'user_login', 'user_url', 'company_email', 'company_phone', 'company_address', 'second_email', 'third_email', 'forth_email' ),
 //	'role__in'           => array(
 //        'test_branch',
 //        'sydney_branch',
