@@ -3,7 +3,7 @@
 $args = array(
 	'role__in'           => array(
         'test_branch',
-//        'sydney_branch',
+        'sydney_branch',
 //        'melbourne_branch',
 //        'perth_branch',
 //        'brisbane_branch',
@@ -19,19 +19,19 @@ $user_query = new WP_User_Query( $args );
 // User Loop
 if ( ! empty( $user_query->get_results() ) ) {
 	foreach ( $user_query->get_results() as $user ) {
-        $message  = 'Dear member,' . "\r\n\r\n";
-        $message .= '' . "\r\n\r\n";
-        $message .= 'Welcome to the new official website of China Chamber of Commerce in Australia!' . "\r\n\r\n";
-        $message .= '' . "\r\n\r\n";
-        $message .= 'Your member account has been created with email address ' . $user->user_login . ' as the login user name.' . "\r\n\r\n";
-        $message .= 'Please click below link, type in your user name and follow process to select your password.' . "\r\n\r\n";
-        $message .= 'https://www.cccaau.org/en/member-password-reset/' . "\r\n\r\n";
-        $message .= '' . "\r\n\r\n";
-        $message .= 'Thanks for your support.' . "\r\n\r\n";
-        $message .= '' . "\r\n\r\n";
-        $message .= 'CCCA Team' . "\r\n";
-        $subject = 'Your CCCA member account is ready.';
-        $headers[] = 'From: Notification <notification@dm.cccaau.org>';
+//        $message  = 'Dear member,' . "\r\n\r\n";
+//        $message .= '' . "\r\n\r\n";
+//        $message .= 'Welcome to the new official website of China Chamber of Commerce in Australia!' . "\r\n\r\n";
+//        $message .= '' . "\r\n\r\n";
+//        $message .= 'Your member account has been created with email address ' . $user->user_login . ' as the login user name.' . "\r\n\r\n";
+//        $message .= 'Please click below link, type in your user name and follow process to select your password.' . "\r\n\r\n";
+//        $message .= 'https://www.cccaau.org/en/member-password-reset/' . "\r\n\r\n";
+//        $message .= '' . "\r\n\r\n";
+//        $message .= 'Thanks for your support.' . "\r\n\r\n";
+//        $message .= '' . "\r\n\r\n";
+//        $message .= 'CCCA Team' . "\r\n";
+//        $subject = 'Your CCCA member account is ready.';
+//        $headers[] = 'From: Notification <notification@dm.cccaau.org>';
 
         $user_info = get_userdata( $user->ID );
         $user_info['company_email'] = get_the_author_meta( 'company_email', $user->ID );
