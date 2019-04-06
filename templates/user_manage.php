@@ -2,7 +2,6 @@
 // WP_User_Query arguments
 $args = array(
 	'role'           => 'test_branch',
-//	'fields'         => array( 'ID', 'user_login', 'user_url', 'company_email', 'company_phone', 'company_address', 'second_email', 'third_email', 'forth_email' ),
 //	'role__in'           => array(
 //        'test_branch',
 //        'sydney_branch',
@@ -35,10 +34,15 @@ if ( ! empty( $user_query->results ) ) {
 //        $subject = 'Your CCCA member account is ready.';
 //        $headers[] = 'From: Notification <notification@dm.cccaau.org>';
 
-        echo $user->ID;
-        echo $user->user_login;
-        echo $user->user_url;
-        echo $user->company_email;
+        echo 'ID: ' . $user->ID;
+        echo 'user_login: ' . $user->user_login;
+        echo 'user_url: ' . $user->user_url;
+        echo 'company_email: ' . $user->company_email;
+        echo 'company_address: ' . $user->company_address;
+        echo 'company_phone: ' . $user->company_phone;
+        echo 'second_email: ' . $user->second_email;
+        echo 'third_email: ' . $user->third_email;
+        echo 'forth_email: ' . $user->forth_email;
 
 //       $user_info = get_userdata( $user->ID );
 //        echo implode(',', $user_info );
