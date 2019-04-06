@@ -1,7 +1,4 @@
 <?php
-global $current_user;
-get_currentuserinfo();
-
 // WP_User_Query arguments
 $args = array(
 	'role__in'           => array(
@@ -35,10 +32,15 @@ if ( ! empty( $user_query->get_results() ) ) {
         $subject = 'Your CCCA member account is ready.';
         $headers[] = 'From: Notification <notification@dm.cccaau.org>';
 
-        $first_email = $user->user_login;
-        $second_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
-        $third_email = esc_attr( get_the_author_meta( 'third_email', $user->ID ) );
-        $forth_email = esc_attr( get_the_author_meta( 'second_email', $user->ID ) );
+        $user_info = get_userdata( $user->ID );
+        $user_info['company_email'] = get_the_author_meta( 'company_email', $user->ID );
+        $user_info['company_address'] = get_the_author_meta( 'company_address', $user->ID );
+        $user_info['company_phone'] = get_the_author_meta( 'company_phone', $user->ID );
+        $user_info['second_email'] = get_the_author_meta( 'second_email', $user->ID );
+        $user_info['third_email'] = get_the_author_meta( 'third_email', $user->ID );
+        $user_info['forth_email'] = get_the_author_meta( 'forth_email', $user->ID );
+
+        echo implode(', ', $user_info);
         // wp_mail( $first_email, $subject, $message, $headers );
         // echo $first_email;
         // wp_mail( $second_email, $subject, $message, $headers );

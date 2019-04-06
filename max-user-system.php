@@ -809,6 +809,7 @@ function mus_user_contactmethods( $user_contact_method ) {
     unset($user_contact_method['yim']);
     unset($user_contact_method['aim']);
     unset($user_contact_method['jabber']);
+    unset($user_contact_method['url']);
 
 	$user_contact_method['company_email'] = __( 'Company Email', 'max-user' );
 	$user_contact_method['company_address'] = __( 'Company Address', 'max-user' );
