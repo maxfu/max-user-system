@@ -35,13 +35,18 @@ if ( ! empty( $user_query->get_results() ) ) {
 
         $user_info = get_userdata( $user->ID );
         $user_info['company_email'] = get_the_author_meta( 'company_email', $user->ID );
+        echo $user_info['company_email'];
         $user_info['company_address'] = get_the_author_meta( 'company_address', $user->ID );
+        echo $user_info['company_address'];
         $user_info['company_phone'] = get_the_author_meta( 'company_phone', $user->ID );
+        echo $user_info['company_phone'];
         $user_info['second_email'] = get_the_author_meta( 'second_email', $user->ID );
+        echo $user_info['second_email'];
         $user_info['third_email'] = get_the_author_meta( 'third_email', $user->ID );
+        echo $user_info['third_email'];
         $user_info['forth_email'] = get_the_author_meta( 'forth_email', $user->ID );
+        echo $user_info['forth_email'];
 
-        echo implode(', ', $user_info);
         // wp_mail( $first_email, $subject, $message, $headers );
         // echo $first_email;
         // wp_mail( $second_email, $subject, $message, $headers );
