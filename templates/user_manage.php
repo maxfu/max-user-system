@@ -1,14 +1,16 @@
 <?php
 // WP_User_Query arguments
 $args = array(
-	'role__in'           => array(
-        'test_branch',
-        'sydney_branch',
+	'role'           => 'test_branch',
+	'fields'         => array( 'ID', 'user_login', 'user_url', 'company_email', 'company_phone', 'company_address', 'second_email', 'third_email', 'forth_email' ),
+//	'role__in'           => array(
+//        'test_branch',
+//        'sydney_branch',
 //        'melbourne_branch',
 //        'perth_branch',
 //        'brisbane_branch',
 //        'adelaide_branch',
-    ),
+//    ),
 //	'search'         => '@',
 //	'search_columns' => array( 'user_login' ),
 );
@@ -17,8 +19,8 @@ $args = array(
 $user_query = new WP_User_Query( $args );
 
 // User Loop
-if ( ! empty( $user_query->get_results() ) ) {
-	foreach ( $user_query->get_results() as $user ) {
+if ( ! empty( $user_query->results ) ) {
+	foreach ( $user_query->results as $user ) {
 //        $message  = 'Dear member,' . "\r\n\r\n";
 //        $message .= '' . "\r\n\r\n";
 //        $message .= 'Welcome to the new official website of China Chamber of Commerce in Australia!' . "\r\n\r\n";
@@ -33,8 +35,13 @@ if ( ! empty( $user_query->get_results() ) ) {
 //        $subject = 'Your CCCA member account is ready.';
 //        $headers[] = 'From: Notification <notification@dm.cccaau.org>';
 
-        $user_info = get_userdata( $user->ID );
-        echo implode(',', $user_info )
+        echo $user->ID;
+        echo $user->user_login;
+        echo $user->user_url;
+        echo $user->company_email;
+
+//       $user_info = get_userdata( $user->ID );
+//        echo implode(',', $user_info );
 //        $user_info['company_email'] = get_the_author_meta( 'company_email', $user->ID );
 //        echo $user_info['company_email'];
 //        $user_info['company_address'] = get_the_author_meta( 'company_address', $user->ID );
