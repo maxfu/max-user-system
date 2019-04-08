@@ -19,6 +19,9 @@
     #ccca-member-profile h3 {
       margin: 0;
     }
+    .form-control {
+        background-color: #ffffff;
+    }
   </style>
 <?php
 $user_info = get_userdata($current_user->ID);
@@ -26,11 +29,6 @@ $user_info = get_userdata($current_user->ID);
   <h2><?php _e('Edit Member Profile', 'max-user'); ?></h2>
 
   <form id="editform" action="<?php echo esc_url( add_query_arg( 'para', 'save', esc_url(get_permalink()) ) )?>" method="post" class="mbr-form">
-    <style type="text/css">
-      .form-control {
-        background-color: #ffffff;
-      }
-    </style>
     <label class="form-control-label mbr-fonts-style display-3"><?php _e( 'Company Information', 'max-user' ); ?></label><br>
     <div class="row row-sm-offset">
       <div class="col-md-2 multi-horizontal"></div>
@@ -90,19 +88,19 @@ if ( $my_para == 'save' ) {
   return false;
 
   $user_info = array(
-    'ID'         => $current_user->ID,
-    'first_name' => sanitize_text_field( $_POST['company_name_en'] ),
-    'last_name'  => sanitize_text_field( $_POST['company_name_zh'] ),
-    'user_url'   => $_POST['company_website'],
-    'user_email' => sanitize_email( $_POST['company_email'] ),
-    'role'       => $_POST['company_branch'],
-    'description' => sanitize_textarea_field($_POST['comment']),
-    'company_email' => sanitize_email($_POST['company_email']),
-    'company_address' => $_POST['company_address'],
-    'company_phone' => $_POST['company_phone'],
-    'second_email' => sanitize_text_field($_POST['second_email']),
-    'third_email' => sanitize_email($_POST['third_email']),
-    'forth_email' => sanitize_email($_POST['forth_email']),
+    'ID'                => $current_user->ID,
+    'first_name'        => sanitize_text_field( $_POST['company_name_en'] ),
+    'last_name'         => sanitize_text_field( $_POST['company_name_zh'] ),
+    'user_url'          => $_POST['company_website'],
+    'user_email'        => sanitize_email( $_POST['company_email'] ),
+    'role'              => $_POST['company_branch'],
+    'description'       => sanitize_textarea_field($_POST['comment']),
+    'company_email'     => sanitize_email($_POST['company_email']),
+    'company_address'   => $_POST['company_address'],
+    'company_phone'     => $_POST['company_phone'],
+    'second_email'      => sanitize_text_field($_POST['second_email']),
+    'third_email'       => sanitize_email($_POST['third_email']),
+    'forth_email'       => sanitize_email($_POST['forth_email']),
   );
 
     wp_update_user( $user_info );
