@@ -8,8 +8,13 @@ $user_query = new WP_User_Query( $args );
 
 // The User Loop
 if ( ! empty( $user_query->results ) ) { ?>
+  <style type="text/css">
+    #ccca-member-list th, #ccca-member-list td {
+        white-space: nowrap;
+    }
+  </style>
 <h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member List', 'max-user' ); ?> <?php echo $user_info->user_login; ?></h2>
-<table class="form-table table isSearch" id="ccca-member-profile">
+<table class="form-table table isSearch" id="ccca-member-list">
   <tbody>
         <tr>
             <th><?php _e( 'Company Name English', 'max-user' ); ?></td>
