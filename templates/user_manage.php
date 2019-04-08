@@ -97,18 +97,24 @@ if ( $my_para == 'save' ) {
     'user_email' => sanitize_email( $_POST['company_email'] ),
     'role'       => $_POST['company_branch'],
     'description' => sanitize_textarea_field($_POST['comment']),
+    'company_email' => sanitize_email($_POST['company_email']),
+    'company_address' => $_POST['company_address'],
+    'company_phone' => $_POST['company_phone'],
+    'second_email' => sanitize_text_field($_POST['second_email']),
+    'third_email' => sanitize_email($_POST['third_email']),
+    'forth_email' => sanitize_email($_POST['forth_email']),
   );
 
   /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
   wp_update_user( $user_info );
-  update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
-  update_usermeta( $current_user->ID, 'company_address', $_POST['company_address'] );
-  update_usermeta( $current_user->ID, 'company_phone', $_POST['company_phone'] );
-//  update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
-  update_usermeta( $current_user->ID, 'second_email', sanitize_text_field($_POST['second_email']) );
-  update_usermeta( $current_user->ID, 'third_email', sanitize_email($_POST['third_email']) );
-  update_usermeta( $current_user->ID, 'forth_email', sanitize_email($_POST['forth_email']) );
-//  update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
+  // update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
+  // update_usermeta( $current_user->ID, 'company_address', $_POST['company_address'] );
+  // update_usermeta( $current_user->ID, 'company_phone', $_POST['company_phone'] );
+  // update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
+  // update_usermeta( $current_user->ID, 'second_email', sanitize_text_field($_POST['second_email']) );
+  // update_usermeta( $current_user->ID, 'third_email', sanitize_email($_POST['third_email']) );
+  // update_usermeta( $current_user->ID, 'forth_email', sanitize_email($_POST['forth_email']) );
+  // update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
 
     echo "<script> location.href='https://www.cccaau.org/member-account/'; </script>";
     exit;
