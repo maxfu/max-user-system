@@ -95,7 +95,7 @@ if ( $my_para == 'save' ) {
     'last_name'  => sanitize_text_field( $_POST['company_name_zh'] ),
     'user_url'   => $_POST['company_website'],
     'user_email' => sanitize_email( $_POST['company_email'] ),
-    'role'       => $_POST['company_branch'],
+    // 'role'       => $_POST['company_branch'],
     'description' => sanitize_textarea_field($_POST['comment']),
     'company_email' => sanitize_email($_POST['company_email']),
     'company_address' => $_POST['company_address'],
