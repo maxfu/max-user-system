@@ -116,7 +116,7 @@ if ( $my_para == 'save' ) {
   // update_usermeta( $current_user->ID, 'forth_email', sanitize_email($_POST['forth_email']) );
   // update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
 
-    echo "<script> location.href='https://www.cccaau.org/member-account/'; </script>";
+    echo '<script> location.href=\'' . esc_url(get_permalink()) . '\'; </script>';
     exit;
 }
 $user_info = get_userdata($current_user->ID);
