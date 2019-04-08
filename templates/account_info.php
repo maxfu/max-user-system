@@ -156,7 +156,7 @@ $user_info = get_userdata($current_user->ID);
   <tr>
     <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo $user_info->description; ?></td>
   </tr>
-  <tbody>
+  </tbody>
 </table>
 
 <p><a class="register-button btn btn-primary btn-form display-4" href="<?php echo esc_url( add_query_arg( 'para', 'edit', esc_url(get_permalink()) ) )?>">Edit Profile</a></p>

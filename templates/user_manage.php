@@ -35,7 +35,7 @@ if ( ! empty( $user_query->results ) ) { ?>
             <td class="body-item mbr-fonts-style display-7"><?php echo $user->forth_email; ?></td>
         </tr>
 	<?php } ?>
-  <tbody>
+  </tbody>
 </table>
 <?php } else {
 	// no users found
