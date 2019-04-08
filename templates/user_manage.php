@@ -1,4 +1,4 @@
-// WP_User_Query arguments
+<?php // WP_User_Query arguments
 $args = array(
 	'role'           => 'sydney_branch',
 );
@@ -7,11 +7,11 @@ $args = array(
 $user_query = new WP_User_Query( $args );
 
 // The User Loop
-if ( ! empty( $user_query->results ) ) {
+if ( ! empty( $user_query->results ) ) { ?>
 <h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user' ); ?> <?php echo $user_info->user_login; ?></h2>
 <table class="form-table table isSearch" id="ccca-member-profile">
   <tbody>
-	foreach ( $user_query->results as $user ) {
+<?php foreach ( $user_query->results as $user ) { ?>
         <tr>
             <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name English', 'max-user' ); ?>: <?php echo $user->first_name; ?></td>
             <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name Chinese', 'max-user' ); ?>: <?php echo $user->last_name; ?></td>
@@ -23,9 +23,9 @@ if ( ! empty( $user_query->results ) ) {
             <td class="body-item mbr-fonts-style display-7"><?php _e( 'Third Email', 'max-user' ); ?>: <?php echo $user->third_email; ?></td>
             <td class="body-item mbr-fonts-style display-7"><?php _e( 'Forth Email', 'max-user' ); ?>: <?php echo $user->forth_email; ?></td>
         </tr>
-	}
+	<?php } ?>
   <tbody>
 </table>
-} else {
+<?php } else {
 	// no users found
-}
+} ?>
