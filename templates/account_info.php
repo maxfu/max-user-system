@@ -43,25 +43,25 @@ $user_info = get_userdata($current_user->ID);
           <span><input type="text" name="company_name_zh" id="company_name_zh" class="form-control" value="<?php echo $user_info->last_name; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_email"><?php _e( 'Company Email', 'max-user' ); ?></label><br>
-          <span><input type="email" name="company_email" id="company_email" class="form-control" value="<?php echo get_the_author_meta( 'company_email', $current_user->ID ); ?>"></span><br>
+          <span><input type="email" name="company_email" id="company_email" class="form-control" value="<?php echo $user_info->company_email; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_address"><?php _e( 'Company Address', 'max-user' ); ?></label><br>
-          <span><input type="text" name="company_address" id="company_address" class="form-control" value="<?php echo get_the_author_meta( 'company_address', $current_user->ID ); ?>"></span><br>
+          <span><input type="text" name="company_address" id="company_address" class="form-control" value="<?php echo $user_info->company_address; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_phone"><?php _e( 'Company Telephone', 'max-user' ); ?></label><br>
-          <span><input type="tel" name="company_phone" id="company_phone" class="form-control" value="<?php echo get_the_author_meta( 'company_phone', $current_user->ID ); ?>"></span><br>
+          <span><input type="tel" name="company_phone" id="company_phone" class="form-control" value="<?php echo $user_info->company_phone; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_website"><?php _e( 'Company Website', 'max-user' ); ?></label><br>
           <span><input type="text" name="company_website" id="company_website" class="form-control" value="<?php echo $user_info->user_url; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="second_email"><?php _e( 'Second Email', 'max-user' ); ?></label><br>
-          <span><input type="text" name="second_email" id="second_email" class="form-control" value="<?php echo get_the_author_meta( 'second_email', $current_user->ID ); ?>"></span><br>
+          <span><input type="text" name="second_email" id="second_email" class="form-control" value="<?php echo $user_info->second_email; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="third_email"><?php _e( 'Third Email', 'max-user' ); ?></label><br>
-          <span><input type="email" name="third_email" id="third_email" class="form-control" value="<?php echo get_the_author_meta( 'third_email', $current_user->ID ); ?>"></span><br>
+          <span><input type="email" name="third_email" id="third_email" class="form-control" value="<?php echo $user_info->third_email; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="forth_email"><?php _e( 'Forth Email', 'max-user' ); ?></label><br>
-          <span><input type="email" name="forth_email" id="forth_email" class="form-control" value="<?php echo get_the_author_meta( 'forth_email', $current_user->ID ); ?>"></span><br>
+          <span><input type="email" name="forth_email" id="forth_email" class="form-control" value="<?php echo $user_info->forth_email; ?>"></span><br>
 
           <label class="form-control-label mbr-fonts-style display-7" for="company_branch"><?php _e( 'Company Branch', 'max-user' ); ?></label><br>
           <span><select name="company_branch" id="company_branch" class="form-control">
@@ -97,62 +97,58 @@ if ( $my_para == 'save' ) {
     'user_email' => sanitize_email( $_POST['company_email'] ),
     'role'       => $_POST['company_branch'],
     'description' => sanitize_textarea_field($_POST['comment']),
+    'company_email' => sanitize_email($_POST['company_email']),
+    'company_address' => $_POST['company_address'],
+    'company_phone' => $_POST['company_phone'],
+    'second_email' => sanitize_text_field($_POST['second_email']),
+    'third_email' => sanitize_email($_POST['third_email']),
+    'forth_email' => sanitize_email($_POST['forth_email']),
   );
 
-  /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
-  wp_update_user( $user_info );
-  update_usermeta( $current_user->ID, 'company_email', sanitize_email($_POST['company_email']) );
-  update_usermeta( $current_user->ID, 'company_address', $_POST['company_address'] );
-  update_usermeta( $current_user->ID, 'company_phone', $_POST['company_phone'] );
-//  update_usermeta( $current_user->ID, 'company_branch', $_POST['company_branch'] );
-  update_usermeta( $current_user->ID, 'second_email', sanitize_text_field($_POST['second_email']) );
-  update_usermeta( $current_user->ID, 'third_email', sanitize_email($_POST['third_email']) );
-  update_usermeta( $current_user->ID, 'forth_email', sanitize_email($_POST['forth_email']) );
-//  update_usermeta( $current_user->ID, 'comment', sanitize_textarea_field($_POST['comment']) );
-
-    echo "<script> location.href='https://www.cccaau.org/member-account/'; </script>";
+    wp_update_user( $user_info );
+    echo '<script> location.href=\'' . esc_url(get_permalink()) . '\'; </script>';
     exit;
 }
 $user_info = get_userdata($current_user->ID);
 ?>
-<h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user' ); ?> <?php echo esc_attr( $user_info->user_login ); ?></h2>
+<h2 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5"><?php _e( 'CCCA Member Profile', 'max-user' ); ?> <?php echo $user_info->user_login; ?></h2>
 
 <table class="form-table table isSearch" id="ccca-member-profile">
   <tbody>
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name English', 'max-user' ); ?>: <?php echo esc_attr( $user_info->first_name ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name English', 'max-user' ); ?>: <?php echo $user_info->first_name; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name Chinese', 'max-user' ); ?>: <?php echo esc_attr( $user_info->last_name ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Name Chinese', 'max-user' ); ?>: <?php echo $user_info->last_name; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Email', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'company_email', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Email', 'max-user' ); ?>: <?php echo $user_info->company_email; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Website', 'max-user' ); ?>: <?php echo esc_attr( $user_info->user_url ); ?></label></th>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Website', 'max-user' ); ?>: <?php echo $user_info->user_url; ?></label></th>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Address', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'company_address', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Address', 'max-user' ); ?>: <?php echo $user_info->company_address; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Telephone', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'company_phone', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Company Telephone', 'max-user' ); ?>: <?php echo $user_info->company_phone; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Second Email', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'second_email', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Second Email', 'max-user' ); ?>: <?php echo $user_info->second_email; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Third Email', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'third_email', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Third Email', 'max-user' ); ?>: <?php echo $user_info->third_email; ?></td>
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Forth Email', 'max-user' ); ?>: <?php echo esc_attr( get_the_author_meta( 'forth_email', $current_user->ID ) ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Forth Email', 'max-user' ); ?>: <?php echo $user_info->forth_email; ?></td>
   </tr>
 
   <tr>
@@ -160,7 +156,7 @@ $user_info = get_userdata($current_user->ID);
   </tr>
 
   <tr>
-    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo esc_attr( $user_info->description ); ?></td>
+    <td class="body-item mbr-fonts-style display-7"><?php _e( 'Comment', 'max-user' ); ?>: <?php echo $user_info->description; ?></td>
   </tr>
   <tbody>
 </table>
